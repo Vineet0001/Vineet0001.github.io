@@ -225,6 +225,46 @@ footer .mono{font-family:var(--mono)}
 .subs{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
 .subs b{font-weight:500;font-size:12px;padding:3px 9px;border-radius:999px;border:1px solid var(--line);color:var(--muted);background:rgba(255,255,255,.02)}
 .tl-item::before{top:22px}
+.cert .cb{flex:1;min-width:0}
+.verify{flex:none;align-self:center;display:inline-flex;align-items:center;gap:4px;font-family:var(--mono);font-size:12px;color:var(--accent);border:1px solid rgba(56,189,248,.3);padding:5px 10px;border-radius:7px;transition:background .2s,border-color .2s}
+.verify svg{width:12px;height:12px}
+.verify:hover{background:rgba(56,189,248,.1);border-color:var(--accent)}
+.verify.sm{font-size:11px;padding:3px 8px}
+.cert.group .ci{background:rgba(56,189,248,.12);color:var(--accent)}
+.cert.group:hover{border-color:rgba(56,189,248,.45)}
+.gh{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.gh .count{font-family:var(--mono);font-size:11px;color:var(--accent);background:rgba(56,189,248,.1);padding:2px 8px;border-radius:999px}
+.subcerts{list-style:none;margin-top:12px;border-left:2px solid var(--line);padding-left:14px}
+.subcerts li{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:9px 0;border-bottom:1px dashed var(--line)}
+.subcerts li:last-child{border-bottom:none;padding-bottom:0}
+.subcerts b{display:block;font-size:14px;font-weight:600;color:var(--text)}
+.subcerts span{display:block;font-size:12.5px;color:var(--muted)}
+.cert-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:22px}
+.cols .cert-head h3.col-t{margin-bottom:0}
+.cert-sum{font-family:var(--mono);font-size:12px;color:var(--dim)}
+.cert-sum b{color:var(--accent);font-weight:700}
+.cert{position:relative;overflow:hidden}
+.cert::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--c,var(--accent));opacity:.55;transition:opacity .25s}
+.cert:hover{border-color:color-mix(in srgb,var(--c,var(--accent)) 45%,transparent)!important;transform:translateX(3px)}
+.cert:hover::before{opacity:1}
+.cert{transition:border-color .25s,transform .25s}
+.mono{flex:none;width:40px;height:40px;border-radius:10px;display:grid;place-items:center;font-family:var(--mono);font-weight:700;font-size:12.5px;letter-spacing:-.02em;color:var(--c);background:color-mix(in srgb,var(--c) 13%,transparent);border:1px solid color-mix(in srgb,var(--c) 28%,transparent)}
+.mono svg{width:18px;height:18px}
+.ctags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.ctags i{font-style:normal;font-family:var(--mono);font-size:11px;color:var(--c);background:color-mix(in srgb,var(--c) 9%,transparent);padding:2px 8px;border-radius:5px}
+.cert .verify{color:var(--c);border-color:color-mix(in srgb,var(--c) 35%,transparent)}
+.cert .verify:hover{background:color-mix(in srgb,var(--c) 12%,transparent);border-color:var(--c)}
+.gh .count{color:var(--c);background:color-mix(in srgb,var(--c) 12%,transparent)}
+.subcerts{border-left-color:color-mix(in srgb,var(--c) 30%,transparent)}
+@media (max-width:720px){
+  .cert{flex-wrap:wrap}
+  .cert .cb{flex:1 1 calc(100% - 54px)}
+  .cert>.verify{margin-left:54px;align-self:flex-start}
+  .subcerts li .verify{align-self:flex-start}
+  .subcerts li{flex-direction:column;align-items:flex-start;gap:6px}
+  .cert-head{flex-direction:column;gap:4px}
+  .inst{flex-wrap:wrap;row-gap:0}
+}
 </style>
 </head>
 <body>
@@ -443,11 +483,12 @@ cache.<span class="t-k">get</span>(<span class="t-s">"b"</span>);     <span clas
         </div>
       </div>
       <div class="reveal">
-        <h3 class="col-t">Certifications</h3>
-        <div class="cert"><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.5 13.5 17 22l-5-3-5 3 1.5-8.5"/></svg></div><div><h4>Supervised Machine Learning: Regression &amp; Classification</h4><p>Stanford Online · DeepLearning.AI</p></div></div>
-        <div class="cert"><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.5 13.5 17 22l-5-3-5 3 1.5-8.5"/></svg></div><div><h4>Python for Data Science, AI &amp; Development</h4><p>IBM</p></div></div>
-        <div class="cert"><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.5 13.5 17 22l-5-3-5 3 1.5-8.5"/></svg></div><div><h4>R Programming</h4><p>Johns Hopkins University</p></div></div>
-        <div class="cert"><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.5 13.5 17 22l-5-3-5 3 1.5-8.5"/></svg></div><div><h4>Data Structures &amp; Algorithms in C++</h4><p>GeeksforGeeks</p></div></div>
+        <div class="cert-head"><h3 class="col-t">Certifications</h3><span class="cert-sum"><b>8</b> certificates · <b>7</b> issuers</span></div>
+        <div class="cert" style="--c:#f87171"><div class="mono">ML</div><div class="cb"><h4>Supervised Machine Learning: Regression &amp; Classification</h4><p>Stanford Online · DeepLearning.AI</p><div class="ctags"><i>Machine Learning</i><i>Regression</i></div></div><a class="verify" href="https://www.coursera.org/account/accomplishments/verify/9HJCAB8FK5K3" target="_blank" rel="noopener">Verify<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
+        <div class="cert" style="--c:#4ade80"><div class="mono">GfG</div><div class="cb"><h4>Data Structures &amp; Algorithms in C++</h4><p>GeeksforGeeks</p><div class="ctags"><i>C++</i><i>DSA</i></div></div><a class="verify" href="#">Verify<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
+        <div class="cert" style="--c:#60a5fa"><div class="mono">IBM</div><div class="cb"><h4>Python for Data Science &amp; AI: Hands-On Development</h4><p>IBM</p><div class="ctags"><i>Python</i><i>Data Science</i></div></div><a class="verify" href="#">Verify<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
+        <div class="cert" style="--c:#a78bfa"><div class="mono">R</div><div class="cb"><h4>R Programming</h4><p>Johns Hopkins University</p><div class="ctags"><i>R</i><i>Statistics</i></div></div><a class="verify" href="https://www.coursera.org/account/accomplishments/verify/RPAVFZ3YPTEK" target="_blank" rel="noopener">Verify<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
+        <div class="cert group" style="--c:#fbbf24"><div class="mono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="12" width="3" height="5" rx="1"/><rect x="12" y="8" width="3" height="9" rx="1"/><rect x="17" y="5" width="3" height="12" rx="1"/></svg></div><div class="cb"><div class="gh"><h4>Tableau</h4><span class="count">4 certificates</span></div><p>Data visualization and dashboard design</p><ul class="subcerts"><li><div><b>Fundamentals of Visualization with Tableau</b><span>University of California, Davis</span></div><a class="verify sm" href="https://www.coursera.org/account/accomplishments/verify/2M6T6JNPRLLB" target="_blank" rel="noopener">Verify<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a></li><li><div><b>Data Visualization with Tableau Project</b><span>University of California, Davis</span></div><a class="verify sm" href="https://www.coursera.org/account/accomplishments/verify/THYB54XNQTQG" target="_blank" rel="noopener">Verify<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a></li><li><div><b>Introduction to Tableau</b><span>Tableau Learning Partner</span></div><a class="verify sm" href="https://www.coursera.org/account/accomplishments/verify/AK58RQZBNB54" target="_blank" rel="noopener">Verify<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a></li><li><div><b>Data Visualization with Tableau</b><span>Board Infinity</span></div><a class="verify sm" href="https://www.coursera.org/account/accomplishments/verify/MQDK8SH9UMSP" target="_blank" rel="noopener">Verify<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a></li></ul></div></div>
       </div>
     </div>
   </div>
