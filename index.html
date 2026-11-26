@@ -315,23 +315,22 @@ footer .mono{font-family:var(--mono)}
             <div class="sub">C++ · cache with pluggable eviction</div>
             <ul>
               <li>Lookup, insert and evict in O(1) average time by pairing a hash map with a doubly linked list written from scratch</li>
-              <li>LRU and FIFO eviction policies behind one interface, so storage, policy and API change independently</li>
-              <li>Unit tests plus a benchmark under simulated high-throughput load</li>
+              <li>Storage, eviction policy and interface in separate layers; LRU and FIFO plug into the same store</li>
+              <li>33-check test suite and a 2M-request benchmark: LRU hit rate 68.5% vs 59.7% for FIFO on skewed traffic</li>
             </ul>
             <div class="stack"><span>C++</span><span>STL</span><span>OOP</span><span>Make</span></div>
           </div>
-<div class="code"><span class="t-v">template</span> &lt;<span class="t-v">typename</span> K, <span class="t-v">typename</span> V&gt;
-<span class="t-v">class</span> <span class="t-k">LRUPolicy</span> {
-  <span class="t-o">// hash map -&gt; list node: O(1) find</span>
-  std::unordered_map&lt;K, Node*&gt; index;
-  DoublyLinkedList&lt;K, V&gt; order;
+<div class="code"><span class="t-o">// real usage from the repo</span>
+KVStore&lt;std::string, <span class="t-v">int</span>&gt; cache(
+    <span class="t-s">3</span>, std::make_unique&lt;<span class="t-k">LRUPolicy</span>&lt;std::string&gt;&gt;());
 
-<span class="t-v">public</span>:
-  <span class="t-o">// move to front on every access</span>
-  <span class="t-k">touch</span>(key)  <span class="t-o">→ O(1)</span>
-  <span class="t-o">// evict tail when full</span>
-  <span class="t-k">evict</span>()     <span class="t-o">→ O(1)</span>
-};</div>
+cache.<span class="t-k">put</span>(<span class="t-s">"a"</span>, 1);
+cache.<span class="t-k">put</span>(<span class="t-s">"b"</span>, 2);
+cache.<span class="t-k">put</span>(<span class="t-s">"c"</span>, 3);
+cache.<span class="t-k">get</span>(<span class="t-s">"a"</span>);     <span class="t-o">// a is now most recent</span>
+cache.<span class="t-k">put</span>(<span class="t-s">"d"</span>, 4);  <span class="t-o">// full: evicts "b", O(1)</span>
+
+cache.<span class="t-k">get</span>(<span class="t-s">"b"</span>);     <span class="t-o">// std::nullopt (miss)</span></div>
         </div>
       </article>
 
@@ -475,20 +474,19 @@ footer .mono{font-family:var(--mono)}
 
   // terminal demo
   var lines = [
-    ['<span class="t-p">$</span> <span class="t-c">make && ./kvstore --policy lru --capacity 3</span>', 500],
-    ['<span class="t-o">KV store ready · policy=LRU · capacity=3</span>', 250],
-    ['<span class="t-k">&gt;</span> <span class="t-c">put user:1 <span class="t-s">"Vineet"</span></span>', 300],
-    ['<span class="t-o">OK</span>', 150],
-    ['<span class="t-k">&gt;</span> <span class="t-c">put lang <span class="t-s">"C++"</span></span>', 300],
-    ['<span class="t-o">OK</span>', 150],
-    ['<span class="t-k">&gt;</span> <span class="t-c">put role <span class="t-s">"SDE"</span></span>', 300],
-    ['<span class="t-o">OK</span>', 150],
-    ['<span class="t-k">&gt;</span> <span class="t-c">get user:1</span>', 300],
-    ['<span class="t-s">"Vineet"</span>  <span class="t-o">// moved to front</span>', 200],
-    ['<span class="t-k">&gt;</span> <span class="t-c">put drink <span class="t-s">"chai"</span></span>', 300],
-    ['<span class="t-v">evicted: lang</span>  <span class="t-o">// least recently used, O(1)</span>', 200],
-    ['<span class="t-p">$</span> <span class="t-c">./benchmark</span>', 400],
-    ['<span class="t-o">get / put / evict ............</span> <span class="t-p">O(1) ✓</span>', 0]
+    ['<span class="t-p">$</span> <span class="t-c">make run</span>', 500],
+    ['<span class="t-k">=== LRU store, capacity 3 ===</span>', 250],
+    ['<span class="t-c">put a, b, c</span>', 300],
+    ['<span class="t-o">  order: [ c b a ]</span>', 200],
+    ['<span class="t-c">get a</span>', 300],
+    ['<span class="t-o">  order: [ </span><span class="t-s">a</span><span class="t-o"> c b ]   // a moves to front</span>', 250],
+    ['<span class="t-c">put d</span>  <span class="t-o">(store is full)</span>', 300],
+    ['<span class="t-o">  order: [ d a c ]   </span><span class="t-v">evicted b</span>', 250],
+    ['<span class="t-p">$</span> <span class="t-c">make test</span>', 500],
+    ['<span class="t-p">All 33 checks passed.</span>', 250],
+    ['<span class="t-p">$</span> <span class="t-c">make bench</span>  <span class="t-o">// 2M requests</span>', 500],
+    ['<span class="t-o">  LRU  hit rate </span><span class="t-s">68.5%</span>', 200],
+    ['<span class="t-o">  FIFO hit rate </span><span class="t-s">59.7%</span>', 0]
   ];
   var term = document.getElementById('term');
   function runTerm(){
