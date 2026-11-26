@@ -60,7 +60,7 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 .hi{font-family:var(--mono);color:var(--accent);font-size:15px;margin-bottom:10px}
 h1{font-size:clamp(42px,6.4vw,72px);line-height:1.02;font-weight:800;letter-spacing:-.035em}
 h1 .grad{background:linear-gradient(120deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
-.role{font-size:clamp(20px,2.6vw,28px);font-weight:600;color:var(--muted);margin:14px 0 20px;min-height:1.4em}
+.role{font-size:clamp(20px,2.6vw,28px);font-weight:600;color:var(--muted);margin:14px 0 20px;height:1.4em;line-height:1.4em;white-space:nowrap;overflow:hidden}
 .role .typed{color:var(--text)}
 .role .caret{display:inline-block;width:2px;height:1em;background:var(--accent);margin-left:3px;vertical-align:-3px;animation:blink 1s steps(1) infinite}
 @keyframes blink{50%{opacity:0}}
@@ -208,6 +208,7 @@ footer .mono{font-family:var(--mono)}
   .skills{grid-template-columns:1fr}
   .sec-head .bar{display:none}
 }
+@media (max-width:360px){.role{font-size:17px}}
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
   .reveal{opacity:1;transform:none}
@@ -527,7 +528,7 @@ cache.<span class="t-k">get</span>(<span class="t-s">"b"</span>);     <span clas
   links.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ links.classList.remove('open'); }); });
 
   // typed roles
-  var roles = ['data structures in C++.', 'backends with Python and Flask.', 'dashboards that explain data.', 'clean, tested software.'];
+  var roles = ['data structures in C++.', 'Python & Flask backends.', 'dashboards for data.', 'clean, tested code.'];
   var el = document.getElementById('typed'), ri = 0, ci = 0, del = false;
   function type(){
     if (reduce){ el.textContent = roles[0]; return; }
