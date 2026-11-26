@@ -208,7 +208,7 @@ footer .mono{font-family:var(--mono)}
   .skills{grid-template-columns:1fr}
   .sec-head .bar{display:none}
 }
-@media (max-width:360px){.role{font-size:17px}}
+@media (max-width:720px){.role{font-size:min(20px,calc((100vw - 48px) / 18.5))}}
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
   .reveal{opacity:1;transform:none}
@@ -528,7 +528,7 @@ cache.<span class="t-k">get</span>(<span class="t-s">"b"</span>);     <span clas
   links.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ links.classList.remove('open'); }); });
 
   // typed roles
-  var roles = ['data structures in C++.', 'Python & Flask backends.', 'dashboards for data.', 'clean, tested code.'];
+  var roles = ['data structures in C++.', 'Python & Flask backends.', 'dashboards that explain data.', 'clean, tested code.'];
   var el = document.getElementById('typed'), ri = 0, ci = 0, del = false;
   function type(){
     if (reduce){ el.textContent = roles[0]; return; }
