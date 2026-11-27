@@ -1,616 +1,1414 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="carbon">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vineet Pal | Software Developer</title>
+<title>Vineet Pal — Software Developer</title>
 <meta name="description" content="Vineet Pal: software developer working with C++, Python and data. B.Tech CSE (Data Science), LPU 2025. Projects in systems, backend and data analysis.">
-<meta name="theme-color" content="#0a0e14">
-<meta property="og:title" content="Vineet Pal | Software Developer">
+<meta name="theme-color" content="#0B0B0C">
+<meta property="og:title" content="Vineet Pal — Software Developer">
 <meta property="og:description" content="C++, Python and data. Projects in systems, backend and data analysis.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://vineet0001.github.io/">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%230a0e14'/><text x='50%' y='54%' text-anchor='middle' dominant-baseline='middle' font-family='monospace' font-size='30' font-weight='700' fill='%2338bdf8'>VP</text></svg>">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='%23141413'/><text x='50%' y='54%' text-anchor='middle' dominant-baseline='middle' font-family='monospace' font-size='28' font-weight='700' fill='%23F4F2EC'>VP</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#0a0e14;--bg2:#0f1520;--card:#121a27;--line:#1e2a3b;
-  --text:#e6edf3;--muted:#8b98a9;--dim:#5c6b7e;
-  --accent:#38bdf8;--accent2:#a78bfa;--green:#4ade80;--amber:#fbbf24;
-  --mono:'JetBrains Mono',ui-monospace,monospace;
-  --sans:'Inter',system-ui,-apple-system,sans-serif;
+  --bg:#F4F2EC;
+  --surface:#FAF9F5;
+  --ink:#141413;
+  --muted:#5A5852;
+  --dim:#85827A;
+  --rule:#141413;
+  --rule-soft:#D6D3C9;
+  --accent:#D9381E;
+  --accent-soft:rgba(217,56,30,.1);
+  --bar-bg:#E6E3DA;
+  --serif:'Instrument Serif',Georgia,serif;
+  --sans:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
 }
+[data-theme="carbon"]{
+  --bg:#0B0B0C;
+  --surface:#131315;
+  --ink:#F2F2F0;
+  --muted:#A1A1AA;
+  --dim:#71717A;
+  --rule:#323236;
+  --rule-soft:#222226;
+  --accent:#F04D32;
+  --accent-soft:rgba(240,77,50,.14);
+  --bar-bg:#1E1E22;
+}
+
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  line-height:1.58;
+  -webkit-font-smoothing:antialiased;
+  transition:background .2s ease,color .2s ease;
+}
 a{color:inherit;text-decoration:none}
-::selection{background:var(--accent);color:var(--bg)}
-.wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
+::selection{background:var(--accent);color:#fff}
 
-/* background */
-.grid-bg{position:fixed;inset:0;z-index:-2;
-  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
-  background-size:56px 56px;opacity:.25;
-  mask-image:radial-gradient(ellipse at 50% 0%,#000 20%,transparent 70%);
-  -webkit-mask-image:radial-gradient(ellipse at 50% 0%,#000 20%,transparent 70%)}
-.glow{position:fixed;z-index:-1;width:600px;height:600px;border-radius:50%;filter:blur(120px);opacity:.14;pointer-events:none}
-.glow.a{background:var(--accent);top:-200px;left:-150px}
-.glow.b{background:var(--accent2);top:100px;right:-250px}
+.container{
+  max-width:1140px;
+  margin:0 auto;
+  border-left:1px solid var(--rule);
+  border-right:1px solid var(--rule);
+  min-height:100vh;
+}
 
-/* nav */
-nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
-nav.scrolled{background:rgba(10,14,20,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-color:var(--line)}
-nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
-.logo{font-family:var(--mono);font-weight:700;font-size:17px}
-.logo span{color:var(--accent)}
-.links{display:flex;gap:28px;font-size:14px;color:var(--muted)}
-.links a{transition:color .2s}
-.links a:hover{color:var(--text)}
-.links a b{font-family:var(--mono);color:var(--accent);font-weight:500;margin-right:4px;font-size:12px}
-.menu-btn{display:none;background:none;border:1px solid var(--line);color:var(--text);border-radius:8px;padding:6px 10px;font-size:18px;cursor:pointer}
+/* top utility bar */
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px;
+  padding:10px 24px;
+  border-bottom:1px solid var(--rule);
+  font-family:var(--mono);
+  font-size:11.5px;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.status-dot{
+  display:inline-block;
+  width:7px;height:7px;
+  background:var(--accent);
+  border-radius:50%;
+  margin-right:8px;
+  vertical-align:1px;
+}
+.theme-toggle{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  padding:4px 10px;
+  border:1px solid var(--rule);
+  transition:background .15s,color .15s;
+}
+.theme-toggle:hover{background:var(--ink);color:var(--bg)}
+
+/* navigation */
+nav{
+  position:sticky;
+  top:0;
+  z-index:40;
+  background:var(--bg);
+  border-bottom:1px solid var(--rule);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:0 24px;
+  height:56px;
+}
+.brand{
+  font-family:var(--mono);
+  font-weight:600;
+  font-size:14px;
+  letter-spacing:-.01em;
+}
+.brand span{color:var(--accent)}
+.nav-links{display:flex;align-items:center;height:100%}
+.nav-links a{
+  height:100%;
+  display:flex;
+  align-items:center;
+  padding:0 16px;
+  font-family:var(--mono);
+  font-size:12px;
+  color:var(--muted);
+  border-left:1px solid var(--rule-soft);
+  transition:color .15s,background .15s;
+}
+.nav-links a:hover{color:var(--ink);background:var(--surface)}
+.menu-btn{
+  display:none;
+  font-family:var(--mono);
+  font-size:12px;
+  padding:6px 10px;
+  border:1px solid var(--rule);
+}
 
 /* hero */
-.hero{min-height:100vh;display:flex;align-items:center;padding:100px 0 60px}
-.hero .wrap{display:grid;grid-template-columns:1.15fr 1fr;gap:56px;align-items:center}
-.badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12.5px;color:var(--green);border:1px solid rgba(74,222,128,.3);background:rgba(74,222,128,.07);padding:6px 12px;border-radius:999px;margin-bottom:22px}
-.badge i{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(74,222,128,.6);animation:pulse 2s infinite}
-@keyframes pulse{70%{box-shadow:0 0 0 8px rgba(74,222,128,0)}100%{box-shadow:0 0 0 0 rgba(74,222,128,0)}}
-.hi{font-family:var(--mono);color:var(--accent);font-size:15px;margin-bottom:10px}
-h1{font-size:clamp(42px,6.4vw,72px);line-height:1.02;font-weight:800;letter-spacing:-.035em}
-h1 .grad{background:linear-gradient(120deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
-.role{font-size:clamp(20px,2.6vw,28px);font-weight:600;color:var(--muted);margin:14px 0 20px;height:1.4em;line-height:1.4em;white-space:nowrap;overflow:hidden}
-.role .typed{color:var(--text)}
-.role .caret{display:inline-block;width:2px;height:1em;background:var(--accent);margin-left:3px;vertical-align:-3px;animation:blink 1s steps(1) infinite}
+.hero{
+  display:grid;
+  grid-template-columns:1.15fr 1fr;
+  border-bottom:1px solid var(--rule);
+}
+.hero-left{
+  padding:52px 36px 44px;
+  border-right:1px solid var(--rule);
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+.kicker{
+  font-family:var(--mono);
+  font-size:12px;
+  color:var(--accent);
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  margin-bottom:14px;
+}
+h1{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:clamp(58px,7.5vw,92px);
+  line-height:.98;
+  letter-spacing:.01em;
+  word-spacing:.18em;
+  margin-bottom:14px;
+}
+h1 em{font-style:italic;color:var(--accent)}
+
+/* live typing line */
+.role-line{
+  font-family:var(--mono);
+  font-size:clamp(14.5px,1.55vw,17px);
+  color:var(--muted);
+  min-height:1.6em;
+  margin-bottom:20px;
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:6px;
+}
+.role-line .typed{
+  color:var(--ink);
+  font-weight:600;
+}
+.role-line .caret{
+  display:inline-block;
+  width:8px;
+  height:1.1em;
+  background:var(--accent);
+  vertical-align:-2px;
+  animation:blink 1s steps(1) infinite;
+}
 @keyframes blink{50%{opacity:0}}
-.lede{color:var(--muted);font-size:17px;max-width:520px}
-.lede strong{color:var(--text);font-weight:600}
-.ctas{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;gap:9px;padding:12px 22px;border-radius:10px;font-weight:600;font-size:15px;transition:transform .2s,box-shadow .2s,background .2s,border-color .2s}
-.btn svg{width:18px;height:18px}
-.btn.primary{background:var(--accent);color:#04121c}
-.btn.primary:hover{transform:translateY(-2px);box-shadow:0 10px 30px -8px rgba(56,189,248,.6)}
-.btn.ghost{border:1px solid var(--line);color:var(--text);background:rgba(255,255,255,.02)}
-.btn.ghost:hover{border-color:var(--accent);transform:translateY(-2px)}
-.socials{display:flex;gap:10px;margin-top:28px}
-.socials a{width:40px;height:40px;display:grid;place-items:center;border:1px solid var(--line);border-radius:10px;color:var(--muted);transition:all .2s}
-.socials a:hover{color:var(--accent);border-color:var(--accent);transform:translateY(-2px)}
-.socials svg{width:18px;height:18px}
 
-/* terminal */
-.term{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 30px 80px -20px rgba(0,0,0,.7),0 0 0 1px rgba(56,189,248,.05);font-family:var(--mono);font-size:13.5px;transform:perspective(1200px) rotateY(-6deg) rotateX(2deg);transition:transform .5s}
-.term:hover{transform:perspective(1200px) rotateY(0) rotateX(0)}
-.term-head{display:flex;align-items:center;gap:7px;padding:12px 14px;border-bottom:1px solid var(--line);background:#0e1521}
-.term-head i{width:11px;height:11px;border-radius:50%}
-.term-head i:nth-child(1){background:#ff5f57}.term-head i:nth-child(2){background:#febc2e}.term-head i:nth-child(3){background:#28c840}
-.term-head span{margin-left:10px;color:var(--dim);font-size:12px}
-.term-body{padding:18px 18px 22px;min-height:300px;line-height:1.75;white-space:pre-wrap}
-.t-p{color:var(--green)}.t-c{color:var(--text)}.t-o{color:var(--muted)}.t-k{color:var(--accent)}.t-s{color:var(--amber)}.t-v{color:var(--accent2)}
+.lede{
+  font-size:16.5px;
+  color:var(--muted);
+  max-width:50ch;
+  margin-bottom:28px;
+}
+.lede strong{color:var(--ink);font-weight:600}
+.hero-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-bottom:28px;
+}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:11px 18px;
+  font-family:var(--mono);
+  font-size:12.5px;
+  font-weight:500;
+  border:1px solid var(--rule);
+  transition:background .15s,color .15s,border-color .15s;
+}
+.btn svg{width:15px;height:15px;flex:none}
+.btn-primary{background:var(--ink);color:var(--bg)}
+.btn-primary:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn-ghost:hover{background:var(--ink);color:var(--bg)}
+.social-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:18px;
+  padding-top:20px;
+  border-top:1px solid var(--rule-soft);
+  font-family:var(--mono);
+  font-size:12px;
+  color:var(--muted);
+}
+.social-row a{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  transition:color .15s;
+}
+.social-row a svg{width:15px;height:15px;flex:none}
+.social-row a:hover{color:var(--accent)}
+.social-row a:hover span{text-decoration:underline;text-underline-offset:4px}
 
-/* sections */
-section{padding:100px 0}
-.sec-head{display:flex;align-items:center;gap:16px;margin-bottom:48px}
-.sec-head .num{font-family:var(--mono);color:var(--accent);font-size:15px}
-.sec-head h2{font-size:clamp(26px,3.4vw,34px);font-weight:700;letter-spacing:-.02em;white-space:nowrap}
-.sec-head .bar{flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent);max-width:320px}
+/* interactive cache widget */
+.hero-right{
+  background:var(--surface);
+  padding:32px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+.widget-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding-bottom:14px;
+  border-bottom:1px solid var(--rule-soft);
+  margin-bottom:18px;
+}
+.widget-title{
+  font-family:var(--mono);
+  font-size:11.5px;
+  text-transform:uppercase;
+  letter-spacing:.07em;
+  color:var(--muted);
+}
+.policy-switch{
+  display:inline-flex;
+  border:1px solid var(--rule);
+}
+.policy-switch button{
+  font-family:var(--mono);
+  font-size:11px;
+  padding:4px 10px;
+  color:var(--muted);
+}
+.policy-switch button.active{
+  background:var(--ink);
+  color:var(--bg);
+}
+.slots-label{
+  display:flex;
+  justify-content:space-between;
+  font-family:var(--mono);
+  font-size:10.5px;
+  color:var(--dim);
+  text-transform:uppercase;
+  margin-bottom:8px;
+}
+.slots{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin-bottom:16px;
+}
+.slot{
+  border:1px solid var(--rule);
+  background:var(--bg);
+  padding:16px 10px;
+  text-align:center;
+  transition:border-color .2s,transform .15s;
+}
+.slot.empty{border-style:dashed;border-color:var(--rule-soft);color:var(--dim)}
+.slot.hit{border-color:var(--accent);background:var(--accent-soft)}
+.slot .k{
+  font-family:var(--mono);
+  font-size:20px;
+  font-weight:600;
+  display:block;
+}
+.slot .meta{
+  font-family:var(--mono);
+  font-size:10.5px;
+  color:var(--dim);
+  margin-top:4px;
+  display:block;
+}
+.sim-controls{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  margin-bottom:14px;
+}
+.sim-btn{
+  font-family:var(--mono);
+  font-size:11.5px;
+  padding:7px 10px;
+  border:1px solid var(--rule-soft);
+  background:var(--bg);
+  text-align:center;
+  transition:all .15s;
+}
+.sim-btn:hover{border-color:var(--rule);background:var(--ink);color:var(--bg)}
+.sim-btn.accent{border-color:var(--accent);color:var(--accent)}
+.sim-btn.accent:hover{background:var(--accent);color:#fff}
+.sim-log{
+  font-family:var(--mono);
+  font-size:12px;
+  padding:12px 14px;
+  border:1px solid var(--rule-soft);
+  background:var(--bg);
+  color:var(--muted);
+  min-height:66px;
+  line-height:1.5;
+}
+.sim-log strong{color:var(--ink)}
+.sim-log .evict{color:var(--accent);font-weight:600}
+.widget-foot{
+  margin-top:16px;
+  padding-top:12px;
+  border-top:1px solid var(--rule-soft);
+  display:flex;
+  justify-content:space-between;
+  font-family:var(--mono);
+  font-size:11px;
+  color:var(--dim);
+}
 
-/* about */
-.about{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:start}
-.about p{color:var(--muted);font-size:16.5px;margin-bottom:16px}
-.about p strong{color:var(--text);font-weight:600}
-.stats{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;transition:border-color .25s,transform .25s}
-.stat:hover{border-color:rgba(56,189,248,.45);transform:translateY(-3px)}
-.stat .n{font-size:34px;font-weight:800;letter-spacing:-.03em;background:linear-gradient(120deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
-.stat .l{color:var(--muted);font-size:13.5px;margin-top:2px}
+/* metric strip */
+.metrics{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  border-bottom:1px solid var(--rule);
+}
+.metric{
+  padding:24px 28px;
+  border-right:1px solid var(--rule);
+}
+.metric:last-child{border-right:none}
+.metric .val{
+  font-family:var(--serif);
+  font-size:44px;
+  line-height:1;
+  letter-spacing:.01em;
+  word-spacing:.14em;
+  margin-bottom:4px;
+}
+.metric .lbl{
+  font-family:var(--mono);
+  font-size:11.5px;
+  color:var(--muted);
+  text-transform:uppercase;
+  letter-spacing:.04em;
+}
 
-/* tracks */
-.tracks{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px}
-.track{background:linear-gradient(180deg,var(--card),var(--bg2));border:1px solid var(--line);border-radius:14px;padding:24px}
-.track .ic{width:42px;height:42px;border-radius:10px;display:grid;place-items:center;margin-bottom:14px;font-family:var(--mono);font-weight:700;font-size:14px}
-.track:nth-child(1) .ic{background:rgba(56,189,248,.12);color:var(--accent)}
-.track:nth-child(2) .ic{background:rgba(167,139,250,.12);color:var(--accent2)}
-.track:nth-child(3) .ic{background:rgba(74,222,128,.12);color:var(--green)}
-.track h3{font-size:17px;margin-bottom:6px}
-.track p{color:var(--muted);font-size:14.5px}
-
-/* skills */
-.skills{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.skill-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px}
-.skill-card h3{font-family:var(--mono);font-size:13px;color:var(--accent);font-weight:500;margin-bottom:14px;text-transform:uppercase;letter-spacing:.08em}
-.chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{font-size:13.5px;padding:6px 11px;border-radius:8px;background:rgba(255,255,255,.035);border:1px solid var(--line);color:var(--text);transition:border-color .2s,color .2s}
-.chip:hover{border-color:var(--accent);color:var(--accent)}
+/* section headers */
+.sec-bar{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  flex-wrap:wrap;
+  gap:12px;
+  padding:20px 36px;
+  border-bottom:1px solid var(--rule);
+  background:var(--surface);
+}
+.sec-bar h2{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:36px;
+  line-height:1.12;
+  letter-spacing:.01em;
+  word-spacing:.18em;
+}
+.sec-bar .idx{
+  font-family:var(--mono);
+  font-size:12px;
+  color:var(--muted);
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
 
 /* projects */
-.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
-.filter{font-family:var(--mono);font-size:13px;padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer;transition:all .2s}
-.filter:hover{color:var(--text);border-color:var(--dim)}
-.filter.on{background:var(--accent);color:#04121c;border-color:var(--accent);font-weight:600}
-.projects{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
-.proj{position:relative;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px;display:flex;flex-direction:column;transition:transform .3s,border-color .3s,box-shadow .3s,opacity .3s;overflow:hidden}
-.proj::before{content:"";position:absolute;inset:0;background:radial-gradient(500px circle at var(--mx,50%) var(--my,0%),rgba(56,189,248,.09),transparent 40%);opacity:0;transition:opacity .3s;pointer-events:none}
-.proj:hover{transform:translateY(-5px);border-color:rgba(56,189,248,.4);box-shadow:0 20px 50px -20px rgba(0,0,0,.8)}
-.proj:hover::before{opacity:1}
-.proj.hide{display:none}
-.proj.featured{grid-column:span 2}
-.proj-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px}
-.proj-tag{font-family:var(--mono);font-size:11.5px;padding:4px 10px;border-radius:6px;font-weight:500}
-.tag-sys{background:rgba(56,189,248,.12);color:var(--accent)}
-.tag-be{background:rgba(167,139,250,.12);color:var(--accent2)}
-.tag-data{background:rgba(74,222,128,.12);color:var(--green)}
-.proj-links a{color:var(--muted);transition:color .2s;display:inline-flex}
-.proj-links a:hover{color:var(--accent)}
-.proj-links svg{width:20px;height:20px}
-.proj h3{font-size:21px;font-weight:700;letter-spacing:-.01em;margin-bottom:4px}
-.proj .sub{font-size:14px;color:var(--dim);font-family:var(--mono);margin-bottom:12px}
-.proj p{color:var(--muted);font-size:15px;margin-bottom:14px}
-.proj ul{list-style:none;margin-bottom:18px}
-.proj li{color:var(--muted);font-size:14.5px;padding-left:20px;position:relative;margin-bottom:6px}
-.proj li::before{content:"▹";position:absolute;left:0;color:var(--accent)}
-.proj .stack{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;font-family:var(--mono);font-size:12.5px;color:var(--dim)}
-.proj .stack span{padding:3px 0}
-.proj .stack span:not(:last-child)::after{content:"·";margin-left:8px;color:var(--line)}
-.feat-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:28px;align-items:center}
-.code{background:#0b111b;border:1px solid var(--line);border-radius:12px;padding:18px;font-family:var(--mono);font-size:12.5px;line-height:1.7;overflow-x:auto;white-space:pre;color:var(--muted)}
-.more{text-align:center;margin-top:36px}
+.filter-bar{
+  display:flex;
+  flex-wrap:wrap;
+  border-bottom:1px solid var(--rule);
+}
+.filter-btn{
+  font-family:var(--mono);
+  font-size:12px;
+  padding:13px 22px;
+  border-right:1px solid var(--rule-soft);
+  color:var(--muted);
+  transition:background .15s,color .15s;
+}
+.filter-btn:hover{color:var(--ink);background:var(--surface)}
+.filter-btn.on{background:var(--ink);color:var(--bg)}
 
-/* timeline */
-.cols{display:grid;grid-template-columns:1fr 1fr;gap:40px}
-.cols h3.col-t{font-size:15px;font-family:var(--mono);color:var(--muted);font-weight:500;margin-bottom:22px;text-transform:uppercase;letter-spacing:.08em}
-.tl{position:relative;padding-left:26px}
-.tl::before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--accent),var(--accent2),transparent)}
-.tl-item{position:relative;margin-bottom:16px}
-.tl-item::before{content:"";position:absolute;left:-26px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--accent)}
-.tl-item .when{font-family:var(--mono);font-size:12.5px;color:var(--accent)}
-.tl-item h4{font-size:17px;margin:2px 0}
-.tl-item p{color:var(--muted);font-size:14.5px}
-.cert{display:flex;gap:14px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:12px;transition:border-color .2s}
-.cert:hover{border-color:rgba(167,139,250,.45)}
-.cert .ci{flex:none;width:36px;height:36px;border-radius:9px;background:rgba(167,139,250,.12);color:var(--accent2);display:grid;place-items:center}
-.cert .ci svg{width:18px;height:18px}
-.cert h4{font-size:15px;font-weight:600}
-.cert p{font-size:13.5px;color:var(--muted)}
+.featured-proj{
+  display:grid;
+  grid-template-columns:1.25fr 1fr;
+  border-bottom:1px solid var(--rule);
+}
+.featured-proj.hide{display:none}
+.fp-main{
+  padding:36px;
+  border-right:1px solid var(--rule);
+}
+.fp-side{
+  padding:36px;
+  background:var(--surface);
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+.tag-line{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  margin-bottom:14px;
+  font-family:var(--mono);
+  font-size:11.5px;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  color:var(--accent);
+}
+.repo-link{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  color:var(--ink);
+  border-bottom:1px solid var(--rule);
+  padding-bottom:2px;
+  transition:color .15s,border-color .15s;
+}
+.repo-link svg{width:13px;height:13px;flex:none}
+.repo-link:hover{color:var(--accent);border-color:var(--accent)}
+.proj-title{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:34px;
+  line-height:1.15;
+  letter-spacing:.01em;
+  word-spacing:.18em;
+  margin-bottom:8px;
+}
+.proj-sub{
+  font-family:var(--mono);
+  font-size:12.5px;
+  color:var(--muted);
+  margin-bottom:16px;
+}
+.proj-list{
+  list-style:none;
+  margin-bottom:20px;
+}
+.proj-list li{
+  position:relative;
+  padding-left:16px;
+  color:var(--muted);
+  font-size:14.5px;
+  margin-bottom:8px;
+}
+.proj-list li::before{
+  content:"—";
+  position:absolute;
+  left:0;
+  color:var(--accent);
+}
+.stack-line{
+  font-family:var(--mono);
+  font-size:12px;
+  color:var(--dim);
+}
 
-/* contact */
-.contact{text-align:center;max-width:620px;margin:0 auto}
-.contact .hi{margin-bottom:12px}
-.contact h2{font-size:clamp(32px,5vw,48px);font-weight:800;letter-spacing:-.03em;margin-bottom:16px}
-.contact p{color:var(--muted);font-size:17px;margin-bottom:32px}
-.mail{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:15px;padding:12px 18px;border:1px dashed var(--line);border-radius:10px;color:var(--text);cursor:pointer;background:transparent;margin-top:18px;transition:border-color .2s}
-.mail:hover{border-color:var(--accent)}
-.mail small{color:var(--dim);font-size:12px}
-footer{border-top:1px solid var(--line);padding:28px 0;color:var(--dim);font-size:13.5px}
-footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
-footer .mono{font-family:var(--mono)}
-footer .by{font-weight:700;background:linear-gradient(120deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
-@media (max-width:720px){footer .wrap{flex-direction:column;gap:6px}footer .mono{font-size:min(13.5px,calc((100vw - 48px) / 28.5))}}
+/* benchmark visual */
+.bench-title{
+  font-family:var(--mono);
+  font-size:11.5px;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  color:var(--muted);
+  margin-bottom:16px;
+}
+.bench-row{margin-bottom:16px}
+.bench-meta{
+  display:flex;
+  justify-content:space-between;
+  font-family:var(--mono);
+  font-size:12.5px;
+  margin-bottom:6px;
+}
+.bench-track{
+  height:14px;
+  background:var(--bar-bg);
+  border:1px solid var(--rule-soft);
+}
+.bench-fill{height:100%;background:var(--ink)}
+.bench-fill.accent{background:var(--accent)}
+.code-snippet{
+  margin-top:20px;
+  padding:16px;
+  border:1px solid var(--rule-soft);
+  background:var(--bg);
+  font-family:var(--mono);
+  font-size:12px;
+  line-height:1.65;
+  overflow-x:auto;
+  white-space:pre;
+  color:var(--muted);
+}
+.code-snippet b{color:var(--ink);font-weight:600}
+.code-snippet em{color:var(--accent);font-style:normal}
+.code-snippet .c{color:var(--dim)}
 
-/* reveal */
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
-.reveal.in{opacity:1;transform:none}
+/* project ledger grid */
+.proj-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+}
+.proj-card{
+  padding:32px 36px;
+  border-bottom:1px solid var(--rule);
+  border-right:1px solid var(--rule);
+  display:flex;
+  flex-direction:column;
+  transition:background .15s;
+}
+.proj-card:nth-child(2n){border-right:none}
+.proj-card:hover{background:var(--surface)}
+.proj-card.hide{display:none}
+.proj-card .proj-title{
+  font-size:29px;
+  letter-spacing:.01em;
+  word-spacing:.18em;
+}
+.proj-card .stack-line{margin-top:auto;padding-top:12px}
+
+/* centered archive tile in 6th slot */
+.archive-cell{
+  padding:32px 36px;
+  border-bottom:1px solid var(--rule);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--surface);
+}
+.archive-cell.span-full{grid-column:1 / -1}
+.archive-box{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  gap:10px;
+  padding:22px 28px;
+  border:1px solid var(--rule);
+  background:var(--bg);
+  transition:border-color .2s,background .2s,transform .2s,box-shadow .2s;
+}
+.archive-box:hover{
+  border-color:var(--accent);
+  background:var(--accent-soft);
+  transform:translateY(-2px);
+  box-shadow:4px 4px 0 var(--accent);
+}
+.archive-box-top{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  font-family:var(--mono);
+  font-size:13.5px;
+  font-weight:600;
+  color:var(--ink);
+}
+.archive-box:hover .archive-box-top{color:var(--accent)}
+.archive-box-top svg{width:17px;height:17px;flex:none}
+.archive-box-sub{
+  font-family:var(--mono);
+  font-size:11.5px;
+  color:var(--muted);
+}
+
+/* about & tracks */
+.about-grid{
+  display:grid;
+  grid-template-columns:1.2fr 1fr;
+  border-bottom:1px solid var(--rule);
+}
+.about-copy{
+  padding:36px;
+  border-right:1px solid var(--rule);
+}
+.about-copy p{
+  color:var(--muted);
+  font-size:15.5px;
+  margin-bottom:14px;
+}
+.about-copy p:last-child{margin-bottom:0}
+.about-copy strong{color:var(--ink);font-weight:600}
+.tracks-col{display:flex;flex-direction:column}
+.track-row{
+  padding:24px 32px;
+  border-bottom:1px solid var(--rule-soft);
+  flex:1;
+}
+.track-row:last-child{border-bottom:none}
+.track-row h3{
+  font-family:var(--mono);
+  font-size:13px;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  margin-bottom:6px;
+}
+.track-row h3 span{color:var(--accent);margin-right:8px}
+.track-row p{font-size:14.5px;color:var(--muted)}
+
+/* skills spec table */
+.spec-table{
+  width:100%;
+  border-collapse:collapse;
+  border-bottom:1px solid var(--rule);
+}
+.spec-table tr{border-bottom:1px solid var(--rule-soft)}
+.spec-table tr:last-child{border-bottom:none}
+.spec-table th{
+  width:240px;
+  text-align:left;
+  padding:18px 36px;
+  font-family:var(--mono);
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.07em;
+  color:var(--muted);
+  background:var(--surface);
+  border-right:1px solid var(--rule);
+  font-weight:500;
+}
+.spec-table td{
+  padding:18px 36px;
+  font-family:var(--mono);
+  font-size:13.5px;
+  color:var(--ink);
+}
+
+/* education & certs */
+.edu-cert-grid{
+  display:grid;
+  grid-template-columns:1fr 1.25fr;
+  border-bottom:1px solid var(--rule);
+}
+.edu-col{
+  padding:36px;
+  border-right:1px solid var(--rule);
+}
+.cert-col{padding:36px}
+.col-label{
+  font-family:var(--mono);
+  font-size:11.5px;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  color:var(--muted);
+  margin-bottom:20px;
+  display:flex;
+  justify-content:space-between;
+}
+.edu-item{
+  padding:18px 0;
+  border-top:1px solid var(--rule-soft);
+}
+.edu-item:first-of-type{border-top:1px solid var(--rule)}
+.edu-meta{
+  display:flex;
+  justify-content:space-between;
+  font-family:var(--mono);
+  font-size:11.5px;
+  color:var(--accent);
+  margin-bottom:6px;
+}
+.edu-item h3{font-size:17px;font-weight:600;margin-bottom:4px}
+.edu-item p{font-size:14px;color:var(--muted)}
+.cert-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  gap:16px;
+  padding:14px 0;
+  border-top:1px solid var(--rule-soft);
+}
+.cert-row:first-of-type{border-top:1px solid var(--rule)}
+.cert-row h4{font-size:14.5px;font-weight:600}
+.cert-row p{font-size:13px;color:var(--muted)}
+.cert-verify{
+  flex:none;
+  font-family:var(--mono);
+  font-size:11.5px;
+  color:var(--accent);
+  border-bottom:1px solid transparent;
+}
+.cert-verify:hover{border-color:var(--accent)}
+.tableau-group{
+  margin-top:12px;
+  padding-top:14px;
+  border-top:1px solid var(--rule);
+}
+.tableau-list{list-style:none;margin-top:8px}
+.tableau-list li{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  gap:12px;
+  padding:8px 0;
+  border-bottom:1px dashed var(--rule-soft);
+  font-size:13.5px;
+}
+.tableau-list li:last-child{border-bottom:none}
+.tableau-list span{color:var(--muted);font-size:12.5px;display:block}
+
+/* contact & footer */
+.contact{
+  padding:64px 36px;
+  display:grid;
+  grid-template-columns:1.2fr 1fr;
+  gap:32px;
+  align-items:end;
+  border-bottom:1px solid var(--rule);
+}
+.contact h2{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:clamp(40px,5vw,60px);
+  line-height:1.05;
+  letter-spacing:.01em;
+  word-spacing:.18em;
+  margin-bottom:14px;
+}
+.contact p{color:var(--muted);max-width:44ch;font-size:15.5px}
+.contact-actions{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:12px;
+}
+.copy-btn{
+  font-family:var(--mono);
+  font-size:13.5px;
+  padding:10px 14px;
+  border:1px dashed var(--rule);
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+}
+.copy-btn svg{width:14px;height:14px;flex:none}
+.copy-btn:hover{border-color:var(--accent);color:var(--accent)}
+.copy-btn small{font-size:11px;color:var(--dim)}
+footer{
+  padding:20px 36px;
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:10px;
+  font-family:var(--mono);
+  font-size:12px;
+  color:var(--muted);
+}
 
 /* responsive */
-@media (max-width:900px){
-  .hero .wrap,.about,.cols,.feat-grid{grid-template-columns:1fr}
-  .term{transform:none}
-  .skills{grid-template-columns:1fr 1fr}
-  .tracks{grid-template-columns:1fr}
-  .projects{grid-template-columns:1fr}
-  .proj.featured{grid-column:auto}
+@media (max-width:920px){
+  .hero,.featured-proj,.about-grid,.edu-cert-grid,.contact{grid-template-columns:1fr}
+  .hero-left,.fp-main,.about-copy,.edu-col{border-right:none;border-bottom:1px solid var(--rule)}
+  .metrics{grid-template-columns:repeat(2,1fr)}
+  .metric:nth-child(2){border-right:none}
+  .metric:nth-child(1),.metric:nth-child(2){border-bottom:1px solid var(--rule)}
+  .proj-grid{grid-template-columns:1fr}
+  .proj-card{border-right:none}
 }
-@media (max-width:720px){
-  .links{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;gap:0;background:rgba(10,14,20,.97);border-bottom:1px solid var(--line);padding:8px 24px 16px}
-  .links.open{display:flex}
-  .links a{padding:12px 0;border-bottom:1px solid var(--line)}
-  .menu-btn{display:block}
-  nav{background:rgba(10,14,20,.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
-  section{padding:72px 0}
-  .skills{grid-template-columns:1fr}
-  .sec-head .bar{display:none}
+@media (max-width:680px){
+  .container{border-left:none;border-right:none}
+  .topbar{padding:10px 16px;font-size:10.5px}
+  nav{padding:0 16px}
+  .menu-btn{display:inline-block}
+  .nav-links{
+    display:none;
+    position:absolute;
+    top:56px;left:0;right:0;
+    height:auto;
+    flex-direction:column;
+    background:var(--bg);
+    border-bottom:1px solid var(--rule);
+  }
+  .nav-links.open{display:flex}
+  .nav-links a{
+    width:100%;
+    padding:14px 16px;
+    border-left:none;
+    border-top:1px solid var(--rule-soft);
+  }
+  .hero-left,.hero-right,.fp-main,.fp-side,.proj-card,.archive-cell,.about-copy,.edu-col,.cert-col,.contact{padding:28px 18px}
+  .sec-bar,footer{padding:16px 18px}
+  .spec-table th,.spec-table td{display:block;width:100%;padding:12px 18px;border-right:none}
+  .spec-table th{padding-bottom:4px}
 }
-@media (max-width:720px){.role{font-size:min(20px,calc((100vw - 48px) / 18.5))}}
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
-  .reveal{opacity:1;transform:none}
-}
-.edu{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;transition:border-color .2s,transform .2s}
-.edu:hover{border-color:rgba(56,189,248,.45);transform:translateX(3px)}
-.edu .top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:6px}
-.edu .lvl{font-family:var(--mono);font-size:11.5px;padding:3px 9px;border-radius:6px;background:rgba(56,189,248,.12);color:var(--accent)}
-.edu .yr{font-family:var(--mono);font-size:12.5px;color:var(--muted)}
-.edu h4{font-size:16.5px;font-weight:700;line-height:1.35;margin:4px 0 8px}
-.edu h4 em{font-style:normal;background:linear-gradient(120deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
-.inst{display:flex;align-items:center;gap:8px;color:var(--text);font-size:14px;font-weight:500}
-.inst svg{width:16px;height:16px;flex:none;color:var(--accent2)}
-.inst span{color:var(--muted);font-weight:400}
-.subs{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
-.subs b{font-weight:500;font-size:12px;padding:3px 9px;border-radius:999px;border:1px solid var(--line);color:var(--muted);background:rgba(255,255,255,.02)}
-.tl-item::before{top:22px}
-.cert .cb{flex:1;min-width:0}
-.verify{flex:none;align-self:center;display:inline-flex;align-items:center;gap:4px;font-family:var(--mono);font-size:12px;color:var(--accent);border:1px solid rgba(56,189,248,.3);padding:5px 10px;border-radius:7px;transition:background .2s,border-color .2s}
-.verify svg{width:12px;height:12px}
-.verify:hover{background:rgba(56,189,248,.1);border-color:var(--accent)}
-.verify.sm{font-size:11px;padding:3px 8px}
-.cert.group .ci{background:rgba(56,189,248,.12);color:var(--accent)}
-.cert.group:hover{border-color:rgba(56,189,248,.45)}
-.gh{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.gh .count{font-family:var(--mono);font-size:11px;color:var(--accent);background:rgba(56,189,248,.1);padding:2px 8px;border-radius:999px}
-.subcerts{list-style:none;margin-top:12px;border-left:2px solid var(--line);padding-left:14px}
-.subcerts li{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:9px 0;border-bottom:1px dashed var(--line)}
-.subcerts li:last-child{border-bottom:none;padding-bottom:0}
-.subcerts b{display:block;font-size:14px;font-weight:600;color:var(--text)}
-.subcerts span{display:block;font-size:12.5px;color:var(--muted)}
-.cert-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:22px}
-.cols .cert-head h3.col-t{margin-bottom:0}
-.cert-sum{font-family:var(--mono);font-size:12px;color:var(--dim)}
-.cert-sum b{color:var(--accent);font-weight:700}
-.cert{position:relative;overflow:hidden}
-.cert::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--c,var(--accent));opacity:.55;transition:opacity .25s}
-.cert:hover{border-color:color-mix(in srgb,var(--c,var(--accent)) 45%,transparent)!important;transform:translateX(3px)}
-.cert:hover::before{opacity:1}
-.cert{transition:border-color .25s,transform .25s}
-.cert .mono{flex:none;width:40px;height:40px;border-radius:10px;display:grid;place-items:center;font-family:var(--mono);font-weight:700;font-size:12.5px;letter-spacing:-.02em;color:var(--c);background:color-mix(in srgb,var(--c) 13%,transparent);border:1px solid color-mix(in srgb,var(--c) 28%,transparent)}
-.cert .mono svg{width:18px;height:18px}
-.ctags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
-.ctags i{font-style:normal;font-family:var(--mono);font-size:11px;color:var(--c);background:color-mix(in srgb,var(--c) 9%,transparent);padding:2px 8px;border-radius:5px}
-.cert .verify{color:var(--c);border-color:color-mix(in srgb,var(--c) 35%,transparent)}
-.cert .verify:hover{background:color-mix(in srgb,var(--c) 12%,transparent);border-color:var(--c)}
-.gh .count{color:var(--c);background:color-mix(in srgb,var(--c) 12%,transparent)}
-.subcerts{border-left-color:color-mix(in srgb,var(--c) 30%,transparent)}
-@media (max-width:720px){
-  .cert{flex-wrap:wrap}
-  .cert .cb{flex:1 1 calc(100% - 54px)}
-  .cert>.verify{margin-left:54px;align-self:flex-start}
-  .subcerts li .verify{align-self:flex-start}
-  .subcerts li{flex-direction:column;align-items:flex-start;gap:6px}
-  .cert-head{flex-direction:column;gap:4px}
-  .inst{flex-wrap:wrap;row-gap:0}
 }
 </style>
 </head>
 <body>
-<div class="grid-bg"></div><div class="glow a"></div><div class="glow b"></div>
+<div class="container">
 
-<nav id="nav">
-  <div class="wrap">
-    <a href="#top" class="logo">vineet<span>.</span>pal</a>
-    <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
-    <div class="links" id="links">
-      <a href="#about"><b>01.</b>About</a>
-      <a href="#skills"><b>02.</b>Skills</a>
-      <a href="#projects"><b>03.</b>Projects</a>
-      <a href="#education"><b>04.</b>Education</a>
-      <a href="#contact"><b>05.</b>Contact</a>
-    </div>
+  <div class="topbar">
+    <div><span class="status-dot"></span>Ghaziabad, IN · Open to SDE, Backend &amp; Data Roles · LPU '25</div>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle color theme">Theme: Carbon</button>
   </div>
-</nav>
 
-<header class="hero" id="top">
-  <div class="wrap">
-    <div>
-      <div class="badge"><i></i>Open to SDE, backend and data roles</div>
-      <div class="hi">Hi, my name is</div>
-      <h1>Vineet <span class="grad">Pal</span></h1>
-      <div class="role">I build <span class="typed" id="typed"></span><span class="caret"></span></div>
-      <p class="lede">Software developer working with <strong>C++</strong>, <strong>Python</strong> and <strong>data</strong>. B.Tech CSE (Data Science) graduate from LPU, 2025, with <strong>200+ DSA problems</strong> solved. I like building things end to end, from a data structure written from scratch to a dashboard that answers a real question.</p>
-      <div class="ctas">
-        <a href="#projects" class="btn primary">View my work
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a href="#contact" class="btn ghost">Get in touch</a>
-      </div>
-      <div class="socials">
-        <a href="https://github.com/Vineet0001" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.69 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg></a>
-        <a href="https://linkedin.com/in/vineetpal0001" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg></a>
-        <a href="mailto:vineet0001pal@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg></a>
-        <a href="https://www.instagram.com/vineeeetttt_/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
-      </div>
+  <nav>
+    <a href="#top" class="brand">vineet<span>.</span>pal</a>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="navLinks">Menu</button>
+    <div class="nav-links" id="navLinks">
+      <a href="#projects">Projects</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
     </div>
-    <div class="term" aria-hidden="true">
-      <div class="term-head"><i></i><i></i><i></i><span>~/in-memory-key-value-store-cpp</span></div>
-      <div class="term-body" id="term"></div>
-    </div>
-  </div>
-</header>
+  </nav>
 
-<main>
-<section id="about">
-  <div class="wrap">
-    <div class="sec-head reveal"><span class="num">01.</span><h2>About me</h2><span class="bar"></span></div>
-    <div class="about">
-      <div class="reveal">
-        <p>I'm a <strong>Computer Science graduate (Data Science, 2025)</strong> from Lovely Professional University, based in Ghaziabad, India.</p>
-        <p>My strongest ground is <strong>C++ and data structures</strong>. I did a 100+ hour DSA course in C++ with GeeksforGeeks, have solved 200+ problems, and built a key-value store with O(1) LRU and FIFO eviction from scratch, including its own doubly linked list, tests and a benchmark.</p>
-        <p>On the <strong>Python</strong> side I build backends and data tools: a Flask chatbot that routes requests across weather, Wikipedia and OpenAI APIs, and a Streamlit dashboard that scores sentiment on X posts and CSV data. I also work in <strong>SQL and R</strong> for analysis and modelling.</p>
-        <p>Outside code, I led an online tech community of 250+ members, and I'm usually found with a cup of chai.</p>
+  <header class="hero" id="top">
+    <div class="hero-left">
+      <div>
+        <div class="kicker">Hi, my name is</div>
+        <h1>Vineet <em>Pal</em></h1>
+        <div class="role-line">
+          <span>I build</span>
+          <span><span class="typed" id="typed">data structures in C++.</span><span class="caret" aria-hidden="true"></span></span>
+        </div>
+        <p class="lede">
+          Software developer working with <strong>C++</strong>, <strong>Python</strong> and <strong>data</strong>. B.Tech CSE (Data Science) graduate from LPU, 2025, with <strong>200+ DSA problems</strong> solved. I like building things end to end, from a data structure written from scratch to a dashboard that answers a real question.
+        </p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">View my work →</a>
+          <a href="#contact" class="btn btn-ghost">Get in touch</a>
+        </div>
       </div>
-      <div class="stats reveal">
-        <div class="stat"><div class="n" data-count="200" data-suffix="+">200+</div><div class="l">DSA problems solved</div></div>
-        <div class="stat"><div class="n" data-count="100" data-suffix="+ hrs">100+ hrs</div><div class="l">C++ DSA training</div></div>
-        <div class="stat"><div class="n" data-count="6">6</div><div class="l">Featured projects</div></div>
-        <div class="stat"><div class="n" data-count="250" data-suffix="+">250+</div><div class="l">Community members led</div></div>
+      <div class="social-row">
+        <a href="https://github.com/Vineet0001" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.69 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
+          <span>GitHub ↗</span>
+        </a>
+        <a href="https://linkedin.com/in/vineetpal0001" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg>
+          <span>LinkedIn ↗</span>
+        </a>
+        <a href="mailto:vineet0001pal@gmail.com" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+          <span>Email ↗</span>
+        </a>
+        <a href="https://www.instagram.com/vineeeetttt_/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          <span>Instagram ↗</span>
+        </a>
       </div>
     </div>
-    <div class="tracks">
-      <div class="track reveal"><div class="ic">C++</div><h3>Systems &amp; DSA</h3><p>Data structures from scratch, complexity analysis, STL, OOP design and benchmarking.</p></div>
-      <div class="track reveal"><div class="ic">API</div><h3>Backend</h3><p>Flask services, REST API integration, HTTPS clients with libcurl, clean error handling.</p></div>
-      <div class="track reveal"><div class="ic">{ }</div><h3>Data &amp; ML</h3><p>Pandas, SQL analysis, R models, Tableau and Streamlit dashboards that answer real questions.</p></div>
-    </div>
-  </div>
-</section>
 
-<section id="skills">
-  <div class="wrap">
-    <div class="sec-head reveal"><span class="num">02.</span><h2>Skills</h2><span class="bar"></span></div>
-    <div class="skills">
-      <div class="skill-card reveal"><h3>Languages</h3><div class="chips"><span class="chip">C++</span><span class="chip">Python</span><span class="chip">SQL</span><span class="chip">R</span><span class="chip">Java</span></div></div>
-      <div class="skill-card reveal"><h3>Core CS</h3><div class="chips"><span class="chip">Data Structures</span><span class="chip">Algorithms</span><span class="chip">OOP</span><span class="chip">Complexity Analysis</span><span class="chip">STL</span></div></div>
-      <div class="skill-card reveal"><h3>Backend &amp; Web</h3><div class="chips"><span class="chip">Flask</span><span class="chip">REST APIs</span><span class="chip">Streamlit</span><span class="chip">libcurl</span><span class="chip">React</span></div></div>
-      <div class="skill-card reveal"><h3>Data &amp; Tools</h3><div class="chips"><span class="chip">Pandas</span><span class="chip">NumPy</span><span class="chip">Scikit-learn</span><span class="chip">MySQL</span><span class="chip">Tableau</span><span class="chip">Excel</span><span class="chip">Git</span><span class="chip">Linux</span></div></div>
-    </div>
-  </div>
-</section>
-
-<section id="projects">
-  <div class="wrap">
-    <div class="sec-head reveal"><span class="num">03.</span><h2>Things I've built</h2><span class="bar"></span></div>
-    <div class="filters reveal" id="filters">
-      <button class="filter on" data-f="all">All</button>
-      <button class="filter" data-f="sys">C++ / Systems</button>
-      <button class="filter" data-f="be">Backend</button>
-      <button class="filter" data-f="data">Data &amp; ML</button>
-    </div>
-    <div class="projects" id="projectGrid">
-
-      <article class="proj featured reveal" data-cat="sys">
-        <div class="feat-grid">
-          <div>
-            <div class="proj-top"><span class="proj-tag tag-sys">Featured · C++ / Systems</span>
-              <div class="proj-links"><a href="https://github.com/Vineet0001/in-memory-key-value-store-cpp" target="_blank" rel="noopener" aria-label="Source code"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.69 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg></a></div></div>
-            <h3>In-Memory Key-Value Store</h3>
-            <div class="sub">C++ · cache with pluggable eviction</div>
-            <ul>
-              <li>Lookup, insert and evict in O(1) average time by pairing a hash map with a doubly linked list written from scratch</li>
-              <li>Storage, eviction policy and interface in separate layers; LRU and FIFO plug into the same store</li>
-              <li>33-check test suite and a 2M-request benchmark: LRU hit rate 68.5% vs 59.7% for FIFO on skewed traffic</li>
-            </ul>
-            <div class="stack"><span>C++</span><span>STL</span><span>OOP</span><span>Make</span></div>
+    <aside class="hero-right" aria-label="Interactive LRU and FIFO Cache Simulator">
+      <div>
+        <div class="widget-head">
+          <span class="widget-title">Live Spec · 3-Slot Cache</span>
+          <div class="policy-switch" role="group" aria-label="Eviction Policy">
+            <button type="button" class="active" data-policy="LRU">LRU</button>
+            <button type="button" data-policy="FIFO">FIFO</button>
           </div>
-<div class="code"><span class="t-o">// real usage from the repo</span>
-KVStore&lt;std::string, <span class="t-v">int</span>&gt; cache(
-    <span class="t-s">3</span>, std::make_unique&lt;<span class="t-k">LRUPolicy</span>&lt;std::string&gt;&gt;());
+        </div>
 
-cache.<span class="t-k">put</span>(<span class="t-s">"a"</span>, 1);
-cache.<span class="t-k">put</span>(<span class="t-s">"b"</span>, 2);
-cache.<span class="t-k">put</span>(<span class="t-s">"c"</span>, 3);
-cache.<span class="t-k">get</span>(<span class="t-s">"a"</span>);     <span class="t-o">// a is now most recent</span>
-cache.<span class="t-k">put</span>(<span class="t-s">"d"</span>, 4);  <span class="t-o">// full: evicts "b", O(1)</span>
+        <div class="slots-label">
+          <span>Head (Newest / MRU)</span>
+          <span>Tail (Evicts Next)</span>
+        </div>
+        <div class="slots" id="cacheSlots"></div>
 
-cache.<span class="t-k">get</span>(<span class="t-s">"b"</span>);     <span class="t-o">// std::nullopt (miss)</span></div>
+        <div class="sim-controls">
+          <button type="button" class="sim-btn" data-op="put" data-k="a">put("a")</button>
+          <button type="button" class="sim-btn" data-op="put" data-k="b">put("b")</button>
+          <button type="button" class="sim-btn" data-op="put" data-k="c">put("c")</button>
+          <button type="button" class="sim-btn accent" data-op="get" data-k="a">get("a")</button>
+          <button type="button" class="sim-btn accent" data-op="put" data-k="d">put("d")</button>
+          <button type="button" class="sim-btn" data-op="reset">reset</button>
+        </div>
+
+        <div class="sim-log" id="simLog">
+          <strong>Ready.</strong> Click operations above to test O(1) eviction behavior under LRU vs FIFO.
+        </div>
+      </div>
+
+      <div class="widget-foot">
+        <span>in-memory-key-value-store-cpp</span>
+        <span>O(1) get / put</span>
+      </div>
+    </aside>
+  </header>
+
+  <section class="metrics" aria-label="Key Metrics">
+    <div class="metric"><div class="val">200+</div><div class="lbl">DSA problems solved</div></div>
+    <div class="metric"><div class="val">100+ hrs</div><div class="lbl">C++ DSA training</div></div>
+    <div class="metric"><div class="val">6</div><div class="lbl">Featured projects</div></div>
+    <div class="metric"><div class="val">250+</div><div class="lbl">Community members led</div></div>
+  </section>
+
+  <main>
+    <section id="projects">
+      <div class="sec-bar">
+        <h2>Things I've built</h2>
+        <span class="idx">Index 01 · 6 Repositories</span>
+      </div>
+
+      <div class="filter-bar" role="group" aria-label="Filter projects by category">
+        <button type="button" class="filter-btn on" data-f="all" aria-pressed="true">All</button>
+        <button type="button" class="filter-btn" data-f="sys" aria-pressed="false">C++ / Systems</button>
+        <button type="button" class="filter-btn" data-f="be" aria-pressed="false">Backend</button>
+        <button type="button" class="filter-btn" data-f="data" aria-pressed="false">Data &amp; ML</button>
+      </div>
+
+      <article class="featured-proj" data-cat="sys">
+        <div class="fp-main">
+          <div class="tag-line">
+            <span>Featured · C++ / Systems</span>
+            <a class="repo-link" href="https://github.com/Vineet0001/in-memory-key-value-store-cpp" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.69 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
+              <span>Source ↗</span>
+            </a>
+          </div>
+          <h3 class="proj-title">In-Memory Key-Value Store</h3>
+          <div class="proj-sub">C++ · cache with pluggable eviction</div>
+          <ul class="proj-list">
+            <li>Lookup, insert and evict in O(1) average time by pairing a hash map with a doubly linked list written from scratch</li>
+            <li>Storage, eviction policy and interface in separate layers; LRU and FIFO plug into the same store</li>
+            <li>33-check test suite and a 2M-request benchmark: LRU hit rate 68.5% vs 59.7% for FIFO on skewed traffic</li>
+          </ul>
+          <div class="stack-line">C++ · STL · OOP · Make</div>
+        </div>
+        <div class="fp-side">
+          <div>
+            <div class="bench-title">Benchmark · 2M Skewed Requests (Hit Rate)</div>
+            <div class="bench-row">
+              <div class="bench-meta"><span>LRU</span><strong>68.5%</strong></div>
+              <div class="bench-track"><div class="bench-fill accent" style="width:68.5%"></div></div>
+            </div>
+            <div class="bench-row">
+              <div class="bench-meta"><span>FIFO</span><strong>59.7%</strong></div>
+              <div class="bench-track"><div class="bench-fill" style="width:59.7%"></div></div>
+            </div>
+          </div>
+          <div class="code-snippet"><span class="c">// real usage from the repo</span>
+<b>KVStore</b>&lt;std::string, int&gt; cache(
+    <em>3</em>, std::make_unique&lt;<b>LRUPolicy</b>&lt;std::string&gt;&gt;());
+
+cache.put(<em>"a"</em>, 1);
+cache.put(<em>"b"</em>, 2);
+cache.put(<em>"c"</em>, 3);
+cache.get(<em>"a"</em>);     <span class="c">// a is now most recent</span>
+cache.put(<em>"d"</em>, 4);  <span class="c">// full: evicts "b", O(1)</span>
+
+cache.get(<em>"b"</em>);     <span class="c">// std::nullopt (miss)</span></div>
         </div>
       </article>
 
-      <article class="proj reveal" data-cat="data">
-        <div class="proj-top"><span class="proj-tag tag-data">Data &amp; ML</span>
-          <div class="proj-links"><a href="https://github.com/Vineet0001/sentiment-lens" target="_blank" rel="noopener" aria-label="Source code"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.69 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg></a></div></div>
-        <h3>Sentiment Lens</h3>
-        <div class="sub">Twitter (X) Sentiment Analysis Dashboard</div>
-        <ul>
-          <li>Pulls recent X posts through the X API v2 or takes a CSV upload with flexible column mapping</li>
-          <li>Regex cleaning and TextBlob polarity with a ±0.05 neutral band so near-zero scores aren't misread</li>
-          <li>Donut chart, polarity histogram, sentiment split and CSV export</li>
-        </ul>
-        <div class="stack"><span>Python</span><span>Streamlit</span><span>Pandas</span><span>Plotly</span><span>TextBlob</span></div>
-      </article>
+      <div class="proj-grid" id="projGrid">
+        <article class="proj-card" data-cat="data">
+          <div class="tag-line">
+            <span>Data &amp; ML</span>
+            <a class="repo-link" href="https://github.com/Vineet0001/sentiment-lens" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.69 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
+              <span>Source ↗</span>
+            </a>
+          </div>
+          <h3 class="proj-title">Sentiment Lens</h3>
+          <div class="proj-sub">Twitter (X) Sentiment Analysis Dashboard</div>
+          <ul class="proj-list">
+            <li>Pulls recent X posts through the X API v2 or takes a CSV upload with flexible column mapping</li>
+            <li>Regex cleaning and TextBlob polarity with a ±0.05 neutral band so near-zero scores aren't misread</li>
+            <li>Donut chart, polarity histogram, sentiment split and CSV export</li>
+          </ul>
+          <div class="stack-line">Python · Streamlit · Pandas · Plotly · TextBlob</div>
+        </article>
 
-      <article class="proj reveal" data-cat="be">
-        <div class="proj-top"><span class="proj-tag tag-be">Backend</span>
-          <div class="proj-links"><a href="https://github.com/Vineet0001/Flask-Chatbot" target="_blank" rel="noopener" aria-label="Source code"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.69 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg></a></div></div>
-        <h3>Flask Chatbot</h3>
-        <div class="sub">Web chatbot with API routing</div>
-        <ul>
-          <li>Flask backend routes each message to built-in rules or to weather, Wikipedia and OpenAI APIs</li>
-          <li>Safe AST-based maths evaluator in place of <code>eval</code>, with request timeouts and graceful fallbacks</li>
-          <li>Keys kept out of the repo through a git-ignored config</li>
-        </ul>
-        <div class="stack"><span>Python</span><span>Flask</span><span>REST APIs</span><span>JavaScript</span></div>
-      </article>
+        <article class="proj-card" data-cat="be">
+          <div class="tag-line">
+            <span>Backend</span>
+            <a class="repo-link" href="https://github.com/Vineet0001/Flask-Chatbot" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.69 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
+              <span>Source ↗</span>
+            </a>
+          </div>
+          <h3 class="proj-title">Flask Chatbot</h3>
+          <div class="proj-sub">Web chatbot with API routing</div>
+          <ul class="proj-list">
+            <li>Flask backend routes each message to built-in rules or to weather, Wikipedia and OpenAI APIs</li>
+            <li>Safe AST-based maths evaluator in place of <code>eval</code>, with request timeouts and graceful fallbacks</li>
+            <li>Keys kept out of the repo through a git-ignored config</li>
+          </ul>
+          <div class="stack-line">Python · Flask · REST APIs · JavaScript</div>
+        </article>
 
-      <article class="proj reveal" data-cat="sys be">
-        <div class="proj-top"><span class="proj-tag tag-sys">C++ / Backend</span>
-          <div class="proj-links"><a href="https://github.com/Vineet0001/CPlusPlus-Chatbot" target="_blank" rel="noopener" aria-label="Source code"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.69 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg></a></div></div>
-        <h3>C++ Chatbot</h3>
-        <div class="sub">Command-line assistant over HTTPS</div>
-        <ul>
-          <li>Calls REST APIs over HTTPS with libcurl and parses responses with nlohmann/json</li>
-          <li>Handles weather, maths and small-talk intents with its own expression parser</li>
-          <li>Secrets split into a git-ignored header with a template for setup</li>
-        </ul>
-        <div class="stack"><span>C++</span><span>libcurl</span><span>nlohmann/json</span></div>
-      </article>
+        <article class="proj-card" data-cat="sys be">
+          <div class="tag-line">
+            <span>C++ / Backend</span>
+            <a class="repo-link" href="https://github.com/Vineet0001/CPlusPlus-Chatbot" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.69 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
+              <span>Source ↗</span>
+            </a>
+          </div>
+          <h3 class="proj-title">C++ Chatbot</h3>
+          <div class="proj-sub">Command-line assistant over HTTPS</div>
+          <ul class="proj-list">
+            <li>Calls REST APIs over HTTPS with libcurl and parses responses with nlohmann/json</li>
+            <li>Handles weather, maths and small-talk intents with its own expression parser</li>
+            <li>Secrets split into a git-ignored header with a template for setup</li>
+          </ul>
+          <div class="stack-line">C++ · libcurl · nlohmann/json</div>
+        </article>
 
-      <article class="proj reveal" data-cat="data">
-        <div class="proj-top"><span class="proj-tag tag-data">Data &amp; ML</span>
-          <div class="proj-links"><a href="https://github.com/Vineet0001/netflix-sql-data-analysis" target="_blank" rel="noopener" aria-label="Source code"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.69 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg></a></div></div>
-        <h3>Netflix SQL Analysis</h3>
-        <div class="sub">20 business questions in MySQL</div>
-        <ul>
-          <li>Answers 20 questions on the Netflix catalogue, from content mix to top genres and countries</li>
-          <li>Data-quality checks, string and date parsing, a scalar subquery and a CTE with RANK()</li>
-        </ul>
-        <div class="stack"><span>MySQL</span><span>SQL</span><span>CTEs</span><span>Window functions</span></div>
-      </article>
+        <article class="proj-card" data-cat="data">
+          <div class="tag-line">
+            <span>Data &amp; ML</span>
+            <a class="repo-link" href="https://github.com/Vineet0001/netflix-sql-data-analysis" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.69 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
+              <span>Source ↗</span>
+            </a>
+          </div>
+          <h3 class="proj-title">Netflix SQL Analysis</h3>
+          <div class="proj-sub">20 business questions in MySQL</div>
+          <ul class="proj-list">
+            <li>Answers 20 questions on the Netflix catalogue, from content mix to top genres and countries</li>
+            <li>Data-quality checks, string and date parsing, a scalar subquery and a CTE with RANK()</li>
+          </ul>
+          <div class="stack-line">MySQL · SQL · CTEs · Window functions</div>
+        </article>
 
-      <article class="proj reveal" data-cat="data">
-        <div class="proj-top"><span class="proj-tag tag-data">Data &amp; ML</span>
-          <div class="proj-links"><a href="https://github.com/Vineet0001/Demographic-Analysis-ML-R" target="_blank" rel="noopener" aria-label="Source code"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.69 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg></a></div></div>
-        <h3>Demographic Analysis in R</h3>
-        <div class="sub">Comparing five ML models</div>
-        <ul>
-          <li>Decision tree, SVM, linear and polynomial regression and k-means on the HairEyeColor dataset</li>
-          <li>Regression scored with RMSE (about 20.07 linear vs 24.50 polynomial), results plotted with ggplot2</li>
-        </ul>
-        <div class="stack"><span>R</span><span>ggplot2</span><span>rpart</span><span>e1071</span></div>
-      </article>
+        <article class="proj-card" data-cat="data">
+          <div class="tag-line">
+            <span>Data &amp; ML</span>
+            <a class="repo-link" href="https://github.com/Vineet0001/Demographic-Analysis-ML-R" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.69 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
+              <span>Source ↗</span>
+            </a>
+          </div>
+          <h3 class="proj-title">Demographic Analysis in R</h3>
+          <div class="proj-sub">Comparing five ML models</div>
+          <ul class="proj-list">
+            <li>Decision tree, SVM, linear and polynomial regression and k-means on the HairEyeColor dataset</li>
+            <li>Regression scored with RMSE (about 20.07 linear vs 24.50 polynomial), results plotted with ggplot2</li>
+          </ul>
+          <div class="stack-line">R · ggplot2 · rpart · e1071</div>
+        </article>
 
-    </div>
-    <div class="more reveal"><a href="https://github.com/Vineet0001?tab=repositories" target="_blank" rel="noopener" class="btn ghost">See everything on GitHub
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
-  </div>
-</section>
-
-<section id="education">
-  <div class="wrap">
-    <div class="sec-head reveal"><span class="num">04.</span><h2>Education &amp; learning</h2><span class="bar"></span></div>
-    <div class="cols">
-      <div class="reveal">
-        <h3 class="col-t">Education</h3>
-        <div class="tl">
-          <div class="tl-item"><div class="edu">
-            <div class="top"><span class="lvl">Undergraduate</span><span class="yr">2021 – 2025</span></div>
-            <h4>B.Tech, Computer Science and Engineering <em>(Data Science)</em></h4>
-            <div class="inst"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg>Lovely Professional University<span>· Punjab</span></div>
-          </div></div>
-          <div class="tl-item"><div class="edu">
-            <div class="top"><span class="lvl">Class XII · CBSE</span><span class="yr">2021</span></div>
-            <h4>Senior Secondary, <em>Science</em></h4>
-            <div class="inst"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg>Saraswati Vidya Mandir<span>· Ghaziabad</span></div>
-            <div class="subs"><b>Physics</b><b>Chemistry</b><b>Mathematics</b><b>Computer Science</b></div>
-          </div></div>
-          <div class="tl-item"><div class="edu">
-            <div class="top"><span class="lvl">Class X · CBSE</span><span class="yr">2019</span></div>
-            <h4>Secondary School</h4>
-            <div class="inst"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg>Saraswati Vidya Mandir<span>· Ghaziabad</span></div>
-          </div></div>
+        <div class="archive-cell" id="archiveCell">
+          <a class="archive-box" href="https://github.com/Vineet0001?tab=repositories" target="_blank" rel="noopener">
+            <span class="archive-box-top">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.69 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
+              <span>See everything on GitHub ↗</span>
+            </span>
+            <span class="archive-box-sub">Full source history &amp; smaller experiments</span>
+          </a>
         </div>
       </div>
-      <div class="reveal">
-        <div class="cert-head"><h3 class="col-t">Certifications</h3><span class="cert-sum"><b>8</b> certificates · <b>7</b> issuers</span></div>
-        <div class="cert" style="--c:#f87171"><div class="mono">ML</div><div class="cb"><h4>Supervised Machine Learning: Regression &amp; Classification</h4><p>Stanford Online · DeepLearning.AI</p><div class="ctags"><i>Machine Learning</i><i>Regression</i></div></div><a class="verify" href="https://www.coursera.org/account/accomplishments/verify/9HJCAB8FK5K3" target="_blank" rel="noopener">Verify<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
-        <div class="cert" style="--c:#4ade80"><div class="mono">GfG</div><div class="cb"><h4>Data Structures &amp; Algorithms in C++</h4><p>GeeksforGeeks</p><div class="ctags"><i>C++</i><i>DSA</i></div></div><a class="verify" href="https://media.geeksforgeeks.org/courses/certificates/5309d42d40a23e047265b3bc50b2d7e3.pdf" target="_blank" rel="noopener">Verify<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
-        <div class="cert" style="--c:#60a5fa"><div class="mono">IBM</div><div class="cb"><h4>Python for Data Science &amp; AI: Hands-On Development</h4><p>IBM</p><div class="ctags"><i>Python</i><i>Data Science</i></div></div><a class="verify" href="#">Verify<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
-        <div class="cert" style="--c:#a78bfa"><div class="mono">R</div><div class="cb"><h4>R Programming</h4><p>Johns Hopkins University</p><div class="ctags"><i>R</i><i>Statistics</i></div></div><a class="verify" href="https://www.coursera.org/account/accomplishments/verify/RPAVFZ3YPTEK" target="_blank" rel="noopener">Verify<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
-        <div class="cert group" style="--c:#fbbf24"><div class="mono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="12" width="3" height="5" rx="1"/><rect x="12" y="8" width="3" height="9" rx="1"/><rect x="17" y="5" width="3" height="12" rx="1"/></svg></div><div class="cb"><div class="gh"><h4>Tableau</h4><span class="count">4 certificates</span></div><p>Data visualization and dashboard design</p><ul class="subcerts"><li><div><b>Fundamentals of Visualization with Tableau</b><span>University of California, Davis</span></div><a class="verify sm" href="https://www.coursera.org/account/accomplishments/verify/2M6T6JNPRLLB" target="_blank" rel="noopener">Verify<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a></li><li><div><b>Data Visualization with Tableau Project</b><span>University of California, Davis</span></div><a class="verify sm" href="https://www.coursera.org/account/accomplishments/verify/THYB54XNQTQG" target="_blank" rel="noopener">Verify<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a></li><li><div><b>Introduction to Tableau</b><span>Tableau Learning Partner</span></div><a class="verify sm" href="https://www.coursera.org/account/accomplishments/verify/AK58RQZBNB54" target="_blank" rel="noopener">Verify<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a></li><li><div><b>Data Visualization with Tableau</b><span>Board Infinity</span></div><a class="verify sm" href="https://www.coursera.org/account/accomplishments/verify/MQDK8SH9UMSP" target="_blank" rel="noopener">Verify<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a></li></ul></div></div>
+    </section>
+
+    <section id="about">
+      <div class="sec-bar">
+        <h2>About me</h2>
+        <span class="idx">Index 02 · Focus Areas</span>
       </div>
-    </div>
-  </div>
-</section>
+      <div class="about-grid">
+        <div class="about-copy">
+          <p>I'm a <strong>Computer Science graduate (Data Science, 2025)</strong> from Lovely Professional University, based in Ghaziabad, India.</p>
+          <p>My strongest ground is <strong>C++ and data structures</strong>. I did a 100+ hour DSA course in C++ with GeeksforGeeks, have solved 200+ problems, and built a key-value store with O(1) LRU and FIFO eviction from scratch, including its own doubly linked list, tests and a benchmark.</p>
+          <p>On the <strong>Python</strong> side I build backends and data tools: a Flask chatbot that routes requests across weather, Wikipedia and OpenAI APIs, and a Streamlit dashboard that scores sentiment on X posts and CSV data. I also work in <strong>SQL and R</strong> for analysis and modelling.</p>
+          <p>Outside code, I led an online tech community of 250+ members, and I'm usually found with a cup of chai.</p>
+        </div>
+        <div class="tracks-col">
+          <div class="track-row">
+            <h3><span>01</span>Systems &amp; DSA</h3>
+            <p>Data structures from scratch, complexity analysis, STL, OOP design and benchmarking.</p>
+          </div>
+          <div class="track-row">
+            <h3><span>02</span>Backend</h3>
+            <p>Flask services, REST API integration, HTTPS clients with libcurl, clean error handling.</p>
+          </div>
+          <div class="track-row">
+            <h3><span>03</span>Data &amp; ML</h3>
+            <p>Pandas, SQL analysis, R models, Tableau and Streamlit dashboards that answer real questions.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<section id="contact">
-  <div class="wrap contact reveal">
-    <div class="hi">05. What's next?</div>
-    <h2>Let's build something.</h2>
-    <p>I'm looking for software engineering, backend and data roles. If you have an opening or just want to talk tech, my inbox is open.</p>
-    <a href="mailto:vineet0001pal@gmail.com" class="btn primary">Say hello
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-    <br>
-    <button class="mail" id="copyMail" type="button">vineet0001pal@gmail.com <small id="copyHint">click to copy</small></button>
-  </div>
-</section>
-</main>
+    <section id="skills">
+      <div class="sec-bar">
+        <h2>Technical Specification</h2>
+        <span class="idx">Index 03 · Skills</span>
+      </div>
+      <table class="spec-table">
+        <tr><th>Languages</th><td>C++ · Python · SQL · R · Java</td></tr>
+        <tr><th>Core CS</th><td>Data Structures · Algorithms · OOP · Complexity Analysis · STL</td></tr>
+        <tr><th>Backend &amp; Web</th><td>Flask · REST APIs · Streamlit · libcurl · React</td></tr>
+        <tr><th>Data &amp; Tools</th><td>Pandas · NumPy · Scikit-learn · MySQL · Tableau · Excel · Git · Linux</td></tr>
+      </table>
+    </section>
 
-<footer>
-  <div class="wrap">
+    <section id="education">
+      <div class="sec-bar">
+        <h2>Education &amp; learning</h2>
+        <span class="idx">Index 04 · 8 Certificates</span>
+      </div>
+      <div class="edu-cert-grid">
+        <div class="edu-col">
+          <div class="col-label"><span>Education</span><span>2019 — 2025</span></div>
+          <div class="edu-item">
+            <div class="edu-meta"><span>Undergraduate</span><span>2021 – 2025</span></div>
+            <h3>B.Tech, Computer Science and Engineering (Data Science)</h3>
+            <p>Lovely Professional University · Punjab</p>
+          </div>
+          <div class="edu-item">
+            <div class="edu-meta"><span>Class XII · CBSE</span><span>2021</span></div>
+            <h3>Senior Secondary, Science</h3>
+            <p>Saraswati Vidya Mandir · Ghaziabad — Physics, Chemistry, Mathematics, Computer Science</p>
+          </div>
+          <div class="edu-item">
+            <div class="edu-meta"><span>Class X · CBSE</span><span>2019</span></div>
+            <h3>Secondary School</h3>
+            <p>Saraswati Vidya Mandir · Ghaziabad</p>
+          </div>
+        </div>
+
+        <div class="cert-col">
+          <div class="col-label"><span>Certifications</span><span>8 certificates · 7 issuers</span></div>
+
+          <div class="cert-row">
+            <div><h4>Supervised Machine Learning: Regression &amp; Classification</h4><p>Stanford Online · DeepLearning.AI</p></div>
+            <a class="cert-verify" href="https://www.coursera.org/account/accomplishments/verify/9HJCAB8FK5K3" target="_blank" rel="noopener">Verify ↗</a>
+          </div>
+          <div class="cert-row">
+            <div><h4>Data Structures &amp; Algorithms in C++</h4><p>GeeksforGeeks</p></div>
+            <a class="cert-verify" href="https://media.geeksforgeeks.org/courses/certificates/5309d42d40a23e047265b3bc50b2d7e3.pdf" target="_blank" rel="noopener">Verify ↗</a>
+          </div>
+          <div class="cert-row">
+            <div><h4>Python for Data Science &amp; AI: Hands-On Development</h4><p>IBM</p></div>
+            <a class="cert-verify" href="#">Verify ↗</a>
+          </div>
+          <div class="cert-row">
+            <div><h4>R Programming</h4><p>Johns Hopkins University</p></div>
+            <a class="cert-verify" href="https://www.coursera.org/account/accomplishments/verify/RPAVFZ3YPTEK" target="_blank" rel="noopener">Verify ↗</a>
+          </div>
+
+          <div class="tableau-group">
+            <div class="col-label" style="margin-bottom:6px"><span>Tableau · Data visualization and dashboard design</span><span>4 certificates</span></div>
+            <ul class="tableau-list">
+              <li><div>Fundamentals of Visualization with Tableau<span>University of California, Davis</span></div><a class="cert-verify" href="https://www.coursera.org/account/accomplishments/verify/2M6T6JNPRLLB" target="_blank" rel="noopener">Verify ↗</a></li>
+              <li><div>Data Visualization with Tableau Project<span>University of California, Davis</span></div><a class="cert-verify" href="https://www.coursera.org/account/accomplishments/verify/THYB54XNQTQG" target="_blank" rel="noopener">Verify ↗</a></li>
+              <li><div>Introduction to Tableau<span>Tableau Learning Partner</span></div><a class="cert-verify" href="https://www.coursera.org/account/accomplishments/verify/AK58RQZBNB54" target="_blank" rel="noopener">Verify ↗</a></li>
+              <li><div>Data Visualization with Tableau<span>Board Infinity</span></div><a class="cert-verify" href="https://www.coursera.org/account/accomplishments/verify/MQDK8SH9UMSP" target="_blank" rel="noopener">Verify ↗</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div>
+        <div class="kicker">Index 05 · What's next?</div>
+        <h2>Let's build something.</h2>
+        <p>I'm looking for software engineering, backend and data roles. If you have an opening or just want to talk tech, my inbox is open.</p>
+      </div>
+      <div class="contact-actions">
+        <a href="mailto:vineet0001pal@gmail.com" class="btn btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+          <span>Say hello →</span>
+        </a>
+        <button type="button" class="copy-btn" id="copyMail">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          <span>vineet0001pal@gmail.com</span>
+          <small id="copyHint">[copy]</small>
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
     <span>© <span id="yr"></span> Vineet Pal</span>
-    <span class="mono">Built with HTML, CSS &amp; JavaScript by <b class="by">Vineet Pal</b></span>
-  </div>
-</footer>
+    <span>Built with HTML, CSS &amp; JavaScript by Vineet Pal</span>
+  </footer>
+</div>
 
 <script>
 (function(){
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   document.getElementById('yr').textContent = new Date().getFullYear();
 
-  // nav
-  var nav = document.getElementById('nav');
-  addEventListener('scroll', function(){ nav.classList.toggle('scrolled', scrollY > 20); });
-  var links = document.getElementById('links');
-  document.getElementById('menuBtn').addEventListener('click', function(){ links.classList.toggle('open'); });
-  links.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ links.classList.remove('open'); }); });
-
-  // typed roles
-  var roles = ['data structures in C++.', 'Python & Flask backends.', 'dashboards that explain data.', 'clean, tested code.'];
-  var el = document.getElementById('typed'), ri = 0, ci = 0, del = false;
-  function type(){
-    if (reduce){ el.textContent = roles[0]; return; }
-    var w = roles[ri];
-    el.textContent = w.slice(0, ci);
-    if (!del && ci < w.length){ ci++; setTimeout(type, 55); }
-    else if (!del){ del = true; setTimeout(type, 1800); }
-    else if (ci > 0){ ci--; setTimeout(type, 28); }
-    else { del = false; ri = (ri + 1) % roles.length; setTimeout(type, 300); }
+  // Theme toggle (Carbon default, Paper second)
+  const root = document.documentElement;
+  const themeBtn = document.getElementById('themeToggle');
+  const saved = localStorage.getItem('vp-theme');
+  if (saved === 'paper') {
+    root.setAttribute('data-theme', 'paper');
+    themeBtn.textContent = 'Theme: Paper';
   }
-  type();
-
-  // terminal demo
-  var lines = [
-    ['<span class="t-p">$</span> <span class="t-c">make run</span>', 500],
-    ['<span class="t-k">=== LRU store, capacity 3 ===</span>', 250],
-    ['<span class="t-c">put a, b, c</span>', 300],
-    ['<span class="t-o">  order: [ c b a ]</span>', 200],
-    ['<span class="t-c">get a</span>', 300],
-    ['<span class="t-o">  order: [ </span><span class="t-s">a</span><span class="t-o"> c b ]   // a moves to front</span>', 250],
-    ['<span class="t-c">put d</span>  <span class="t-o">(store is full)</span>', 300],
-    ['<span class="t-o">  order: [ d a c ]   </span><span class="t-v">evicted b</span>', 250],
-    ['<span class="t-p">$</span> <span class="t-c">make test</span>', 500],
-    ['<span class="t-p">All 33 checks passed.</span>', 250],
-    ['<span class="t-p">$</span> <span class="t-c">make bench</span>  <span class="t-o">// 2M requests</span>', 500],
-    ['<span class="t-o">  LRU  hit rate </span><span class="t-s">68.5%</span>', 200],
-    ['<span class="t-o">  FIFO hit rate </span><span class="t-s">59.7%</span>', 0]
-  ];
-  var term = document.getElementById('term');
-  function runTerm(){
-    term.innerHTML = '';
-    var i = 0;
-    (function next(){
-      if (i >= lines.length){ setTimeout(runTerm, 6000); return; }
-      term.innerHTML += (i ? '\n' : '') + lines[i][0];
-      setTimeout(next, reduce ? 0 : lines[i][1] + 120); i++;
-    })();
-  }
-  if (reduce){ term.innerHTML = lines.map(function(l){ return l[0]; }).join('\n'); } else { setTimeout(runTerm, 600); }
-
-  // reveal + counters
-  function count(n){
-    var target = +n.dataset.count, suf = n.dataset.suffix || '', t0 = null;
-    if (reduce){ n.textContent = target + suf; return; }
-    function step(ts){ if(!t0) t0 = ts; var p = Math.min((ts - t0) / 1200, 1);
-      n.textContent = Math.round(target * (1 - Math.pow(1 - p, 3))) + suf;
-      if (p < 1) requestAnimationFrame(step); }
-    requestAnimationFrame(step);
-  }
-  var io = new IntersectionObserver(function(es){
-    es.forEach(function(e){ if (e.isIntersecting){
-      e.target.classList.add('in');
-      e.target.querySelectorAll('[data-count]').forEach(count);
-      io.unobserve(e.target); } });
-  }, {threshold: .12});
-  document.querySelectorAll('.reveal').forEach(function(r){ io.observe(r); });
-
-  // project filter
-  var btns = document.querySelectorAll('.filter');
-  btns.forEach(function(b){ b.addEventListener('click', function(){
-    btns.forEach(function(x){ x.classList.remove('on'); }); b.classList.add('on');
-    var f = b.dataset.f;
-    document.querySelectorAll('.proj').forEach(function(p){
-      var show = f === 'all' || p.dataset.cat.split(' ').indexOf(f) > -1;
-      p.classList.toggle('hide', !show);
-      p.classList.toggle('featured', show && f === 'all' && p.dataset.cat === 'sys' && p.querySelector('.feat-grid'));
-    });
-  }); });
-
-  // spotlight on cards
-  document.querySelectorAll('.proj').forEach(function(c){
-    c.addEventListener('mousemove', function(e){ var r = c.getBoundingClientRect();
-      c.style.setProperty('--mx', (e.clientX - r.left) + 'px'); c.style.setProperty('--my', (e.clientY - r.top) + 'px'); });
+  themeBtn.addEventListener('click', () => {
+    const next = root.getAttribute('data-theme') === 'carbon' ? 'paper' : 'carbon';
+    root.setAttribute('data-theme', next);
+    themeBtn.textContent = next === 'carbon' ? 'Theme: Carbon' : 'Theme: Paper';
+    localStorage.setItem('vp-theme', next);
   });
 
-  // copy email
-  var cm = document.getElementById('copyMail'), hint = document.getElementById('copyHint');
-  cm.addEventListener('click', function(){
-    if (navigator.clipboard){ navigator.clipboard.writeText('vineet0001pal@gmail.com').then(function(){
-      hint.textContent = 'copied ✓'; setTimeout(function(){ hint.textContent = 'click to copy'; }, 1800); }); }
+  // Live typing line ("I build ...")
+  const roles = [
+    'data structures in C++.',
+    'Python & Flask backends.',
+    'dashboards that explain data.',
+    'clean, tested code.'
+  ];
+  const typedEl = document.getElementById('typed');
+  let ri = 0, ci = 0, deleting = false;
+  function typeLoop() {
+    if (reduce) {
+      typedEl.textContent = roles[0];
+      return;
+    }
+    const word = roles[ri];
+    typedEl.textContent = word.slice(0, ci);
+    if (!deleting && ci < word.length) {
+      ci++;
+      setTimeout(typeLoop, 55);
+    } else if (!deleting) {
+      deleting = true;
+      setTimeout(typeLoop, 1800);
+    } else if (ci > 0) {
+      ci--;
+      setTimeout(typeLoop, 28);
+    } else {
+      deleting = false;
+      ri = (ri + 1) % roles.length;
+      setTimeout(typeLoop, 300);
+    }
+  }
+  typeLoop();
+
+  // Mobile nav + Escape close
+  const menuBtn = document.getElementById('menuBtn');
+  const navLinks = document.getElementById('navLinks');
+  function setMenu(open) {
+    navLinks.classList.toggle('open', open);
+    menuBtn.setAttribute('aria-expanded', String(open));
+  }
+  menuBtn.addEventListener('click', () => setMenu(!navLinks.classList.contains('open')));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
+
+  // Interactive 3-slot LRU / FIFO cache simulator
+  const CAP = 3;
+  let policy = 'LRU';
+  let entries = ['c', 'b', 'a'];
+  let highlightKey = null;
+  const slotsEl = document.getElementById('cacheSlots');
+  const logEl = document.getElementById('simLog');
+
+  function renderCache() {
+    slotsEl.innerHTML = '';
+    for (let i = 0; i < CAP; i++) {
+      const div = document.createElement('div');
+      const key = entries[i];
+      if (!key) {
+        div.className = 'slot empty';
+        div.innerHTML = '<span class="k">—</span><span class="meta">empty</span>';
+      } else {
+        div.className = 'slot' + (key === highlightKey ? ' hit' : '');
+        const pos = i === 0 ? 'head' : (i === entries.length - 1 ? 'evict next' : 'mid');
+        div.innerHTML = '<span class="k">"' + key + '"</span><span class="meta">' + pos + '</span>';
+      }
+      slotsEl.appendChild(div);
+    }
+  }
+
+  document.querySelectorAll('.policy-switch button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.policy-switch button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      policy = btn.dataset.policy;
+      highlightKey = null;
+      logEl.innerHTML = '<strong>Policy switched to ' + policy + '.</strong> ' +
+        (policy === 'LRU' ? 'get() promotes keys to head.' : 'get() keeps insertion order intact.');
+      renderCache();
+    });
+  });
+
+  document.querySelectorAll('.sim-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const op = btn.dataset.op, k = btn.dataset.k;
+      if (op === 'reset') {
+        entries = ['c', 'b', 'a'];
+        highlightKey = null;
+        logEl.innerHTML = '<strong>Reset.</strong> Cache seeded with ["c", "b", "a"].';
+        renderCache();
+        return;
+      }
+      const idx = entries.indexOf(k);
+      if (op === 'get') {
+        if (idx === -1) {
+          highlightKey = null;
+          logEl.innerHTML = '<strong>get("' + k + '") → std::nullopt</strong> (miss).';
+        } else {
+          highlightKey = k;
+          if (policy === 'LRU') {
+            entries.splice(idx, 1);
+            entries.unshift(k);
+            logEl.innerHTML = '<strong>get("' + k + '") → HIT.</strong> "' + k + '" is now most recent.';
+          } else {
+            logEl.innerHTML = '<strong>get("' + k + '") → HIT.</strong> FIFO ignores recency; order unchanged.';
+          }
+        }
+      } else if (op === 'put') {
+        highlightKey = k;
+        if (idx !== -1) {
+          if (policy === 'LRU') {
+            entries.splice(idx, 1);
+            entries.unshift(k);
+          }
+          logEl.innerHTML = '<strong>put("' + k + '") → updated</strong> existing key in O(1).';
+        } else if (entries.length >= CAP) {
+          const evicted = entries.pop();
+          entries.unshift(k);
+          logEl.innerHTML = '<strong>put("' + k + '") → full:</strong> <span class="evict">evicts "' + evicted + '"</span>, O(1).';
+        } else {
+          entries.unshift(k);
+          logEl.innerHTML = '<strong>put("' + k + '") → inserted</strong> at head in O(1).';
+        }
+      }
+      renderCache();
+    });
+  });
+  renderCache();
+
+  // Project filter with aria-pressed & archive cell alignment
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const items = document.querySelectorAll('[data-cat]');
+  const gridCards = document.querySelectorAll('#projGrid .proj-card');
+  const archiveCell = document.getElementById('archiveCell');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => {
+        const active = b === btn;
+        b.classList.toggle('on', active);
+        b.setAttribute('aria-pressed', String(active));
+      });
+      const f = btn.dataset.f;
+      items.forEach(item => {
+        const show = f === 'all' || item.dataset.cat.split(' ').includes(f);
+        item.classList.toggle('hide', !show);
+      });
+      const visibleGridCount = Array.from(gridCards).filter(c => !c.classList.contains('hide')).length;
+      archiveCell.classList.toggle('span-full', visibleGridCount % 2 === 0);
+    });
+  });
+
+  // Email copy with fallback
+  const copyBtn = document.getElementById('copyMail');
+  const copyHint = document.getElementById('copyHint');
+  copyBtn.addEventListener('click', () => {
+    const email = 'vineet0001pal@gmail.com';
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(email).then(() => {
+        copyHint.textContent = '[copied]';
+        setTimeout(() => { copyHint.textContent = '[copy]'; }, 1800);
+      }).catch(() => { copyHint.textContent = '[Ctrl+C]'; });
+    } else {
+      copyHint.textContent = '[Ctrl+C]';
+    }
   });
 })();
 </script>
